@@ -1,30 +1,76 @@
-.bannerheader {
-  background-color: #f4f4f4;
-  min-height: 120px;
-  vertical-align: middle;
-  text-align: center;
-   
-  background-position: center;
+.headerMenu {
+  height: 65px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 1px;
+  background-color: cadetblue;
+  position: -webkit-sticky;
+  position: sticky;
+  display: flex;
+  top: 0;
+  justify-content: center;
+  font-size: 20px;
 }
-.container-fluid {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.bannerheader .royaume {
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+.Navbar {
   background-color: blue;
+  width: 100%;
+  height: 80px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
 }
-.bannerheader .sloagn {
-  padding-top: 16px;
+.Navbar .leftSide {
+  flex: 50%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
-.bannerheader .logo {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.Navbar .leftSide .Links {
+  max-height: 80px;
 }
-.vertical-center {
-  margin-right: 0% !important;
-  margin-left: 5% !important;
+.Navbar .leftSide button {
+  display: none;
+  margin-left: 15px;
+}
+
+.Navbar .leftSide #hidden {
+  display: flex;
+  margin-left: 15px;
+}
+
+.Navbar .leftSide .Links a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+.Navbar .rightSide {
+  flex: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 25px;
+}
+
+.rightSide button {
+  height: 30px;
+  width: 70px;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 850px) {
+  .Navbar .leftSide .Links a {
+             font-size: 15px;   
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .Navbar .leftSide button {
+    display: flex;
+  }
+
+  .Navbar .leftSide .Links {
+    display: none;
+  }
 }

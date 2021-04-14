@@ -1,26 +1,34 @@
-import React from "react"; 
-import "../Style/css/header.css";
+import React, {useState} from "react"; 
+import "../Style/css/Header.css";
 import 'bootstrap/dist/css/bootstrap.css';
+import logo from "../Style/img/car.jpg"
 export const Header = () => {
+ 
   return (
-    <div class="bannerheader">
-      <div class="container-fluid"> 
-        <div class="container row vertical-center">
+    
+        <div class="Navbar  ">
+          <div className="leftSide">
+           <div className="Links" >
+            <a>Home</a>
           
-          <div class="col-sm-3 col-xs-3 text-center royaume">
-            <img  class="img-responsive" /> logo
-          </div>
 
-          <div class="col-sm-6 col-xs-6 text-center sloagn">
-           menu
-          </div>
 
-          <div class="col-sm-3 col-xs-3 text-center logo">
-            <img  class="img-responsive" /> login
+          
+            <a>Client</a>
+            <a>Contact Us</a>
+            </div>
+            <button>open</button>
           </div>
+       
+          <div className="rightSide">
+           
+            <button></button>
+          </div>
+       
+ 
 
         </div>
-      </div>
-    </div>
+   
+       
   );
 };
