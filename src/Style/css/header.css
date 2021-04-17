@@ -1,19 +1,5 @@
-.headerMenu {
-  height: 65px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 1px;
-  background-color: cadetblue;
-  position: -webkit-sticky;
-  position: sticky;
-  display: flex;
-  top: 0;
-  justify-content: center;
-  font-size: 20px;
-}
-
 .Navbar {
-  background-color: blue;
+  background-color: white;
   width: 100%;
   height: 80px;
   font-family: Arial, Helvetica, sans-serif;
@@ -40,9 +26,10 @@
 
 .Navbar .leftSide .Links a {
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 25px;
   margin-left: 15px;
+  cursor: pointer;
 }
 
 .Navbar .rightSide {
@@ -53,15 +40,30 @@
   padding-right: 25px;
 }
 
+.Navbar .rightSide .loginbtn {
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 25px;
+  width: 150px;
+  height: 50%;
+  font-size: larger;
+  font-family: ui-rounded;
+}
+
 .rightSide button {
   height: 30px;
   width: 70px;
   font-size: 16px;
 }
 
+.menuimg {
+  height: 63px;
+  padding-left: 9px;
+}
+
 @media only screen and (max-width: 850px) {
   .Navbar .leftSide .Links a {
-             font-size: 15px;   
+    font-size: 15px;
   }
 }
 
