@@ -10,56 +10,80 @@ export class SearchComponent extends Component {
     this.state = {
       marque: "",
       model: "",
-      ville: "",
+      city: "",
     };
   }
 
   submitSearch = (e) => {
+    let { marque, model, city } = this.state;
     e.preventDefault();
     console.log("heloo");
-    CarService.ShercheCar("porche", "207", "rabat");
+    CarService.ShercheCar(marque, model, city);
   };
 
   render() {
-    let { marque } = this.state;
     return (
       <form onSubmit={this.submitSearch}>
         <div class="SearchComponentParent container">
           <div class="SearchComponentCont row center">
             <div class="MarqueSection col-5">
-              <select class="mdb-select md-form" searchable="Search here..">
+              <select
+                class="mdb-select md-form"
+                searchable="Search here.."
+                onChange={(e) => {
+                  this.setState({
+                    marque: e.target.value,
+                  });
+                }}
+              >
                 <option value="" disabled selected>
                   Choose your Marque
                 </option>
-                <option value="1">Ferrari</option>
-                <option value="2">Ford</option>
-                <option value="3">Mercides</option>
-                <option value="3">Reunault</option>
-                <option value="3">Fiat</option>
+                <option value="Ferrari">Ferrari</option>
+                <option value="Ford">Ford</option>
+                <option value="Mercides">Mercides</option>
+                <option value="Reunault">Reunault</option>
+                <option value="Fiat">Fiat</option>
               </select>
             </div>
             <div class="ModelSection col-5">
-              <select class="mdb-select md-form" searchable="Search here..">
+              <select
+                class="mdb-select md-form"
+                searchable="Search here.."
+                onChange={(e) => {
+                  this.setState({
+                    model: e.target.value,
+                  });
+                }}
+              >
                 <option value="" disabled selected>
                   Choose your Model
                 </option>
-                <option value="1">USA</option>
-                <option value="2">Germany</option>
-                <option value="3">France</option>
-                <option value="3">Poland</option>
-                <option value="3">Japan</option>
+                <option value="USA">USA</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="Poland">Poland</option>
+                <option value="Japan">Japan</option>
               </select>
             </div>
             <div class="Citysection col-2">
-              <select class="mdb-select md-form" searchable="Search here..">
+              <select
+                class="mdb-select md-form"
+                searchable="Search here.."
+                onChange={(e) => {
+                  this.setState({
+                    city: e.target.value,
+                  });
+                }}
+              >
                 <option value="" disabled selected>
                   Choose your City
                 </option>
-                <option value="1">USA</option>
-                <option value="2">Germany</option>
-                <option value="3">France</option>
-                <option value="3">Poland</option>
-                <option value="3">Japan</option>
+                <option value="USA">USA</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="Poland">Poland</option>
+                <option value="Japan">Japan</option>
               </select>
             </div>
           </div>
