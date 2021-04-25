@@ -2,6 +2,9 @@ import React, { Component, useState } from "react";
 import "../Style/css/SearchComponent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
+import { Link } from "react-router-dom";
+
+import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 
 export class SearchComponent extends Component {
   constructor(props) {
@@ -18,7 +21,8 @@ export class SearchComponent extends Component {
     let { marque, model, city } = this.state;
     e.preventDefault();
     console.log("heloo");
-    CarService.ShercheCar(marque, model, city);
+    //CarService.ShercheCar(marque, model, city);
+    var ss = CarService.ShercheCar("BMW", "x6", "Rabat");
   };
 
   render() {
@@ -26,9 +30,9 @@ export class SearchComponent extends Component {
       <form onSubmit={this.submitSearch}>
         <div class="SearchComponentParent container">
           <div class="SearchComponentCont row center">
-            <div class="MarqueSection col-5">
+            <div class="MarqueSection  col-lg-4  col-sm-12 ">
               <select
-                class="mdb-select md-form"
+                class="mdb-select md-form w-250"
                 searchable="Search here.."
                 onChange={(e) => {
                   this.setState({
@@ -46,9 +50,9 @@ export class SearchComponent extends Component {
                 <option value="Fiat">Fiat</option>
               </select>
             </div>
-            <div class="ModelSection col-5">
+            <div class="ModelSection col-lg-4 col-sm-12">
               <select
-                class="mdb-select md-form"
+                class="mdb-select md-form w-250"
                 searchable="Search here.."
                 onChange={(e) => {
                   this.setState({
@@ -66,9 +70,9 @@ export class SearchComponent extends Component {
                 <option value="Japan">Japan</option>
               </select>
             </div>
-            <div class="Citysection col-2">
+            <div class="Citysection col-lg-4 col-sm-12">
               <select
-                class="mdb-select md-form"
+                class="mdb-select md-form w-250"
                 searchable="Search here.."
                 onChange={(e) => {
                   this.setState({
