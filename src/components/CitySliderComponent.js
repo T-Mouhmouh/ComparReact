@@ -18,43 +18,8 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
-let DemoData = [
-  {
-    img:
-      "https://maroc-diplomatique.net/wp-content/uploads/2018/10/1024px-Renault_2009_logo.svg-e1538403417655.png",
-    title: "Renult",
-  },
-  {
-    img:
-      "https://i.pinimg.com/originals/f4/97/94/f49794ec7ca66c00608fefccf711cd55.jpg",
-    title: "Mercides",
-  },
-
-  {
-    img:
-      "https://www.zastavki.com/pictures/640x480/2011Brands_Audi_logo_027961_29.jpg",
-    title: "Audi",
-  },
-  {
-    img:
-      "https://img-4.linternaute.com/2jQvz-_kz_EwazKCRMIWLAZFLRE=/450x/smart/96554f639fa249b1ae8cebaa7239a4bf/ccmcms-linternaute/22661525.png",
-    title: "Peugeot ",
-  },
-  {
-    img: "https://www.android.com/static/2016/img/auto/logos/fiat_w_1x.jpg",
-    title: "Fiat",
-  },
-  {
-    img:
-      "https://www.pngkey.com/png/detail/67-671397_land-rover-range-rover-logo.png",
-    title: "RangeRover",
-  },
-  {
-    img: "https://cdn.1min30.com/wp-content/uploads/2017/10/Logo-Volvo-1.jpg",
-    title: "Volvo",
-  },
-];
-export class MarqueSliderComponent extends Component {
+let DemoData = ["Rabat", "Sale", "Casa", "Taza", "Oujda"];
+export class CitySliderComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -72,25 +37,22 @@ export class MarqueSliderComponent extends Component {
     console.log("render:", data);
     return (
       <>
-        <div class="MarqueParent container">
+        <div class="SLiderParent container">
           <div className="row SliderRow">
             <Swiper
-              spaceBetween={10}
-              slidesPerView={3}
+              spaceBetween={5}
+              slidesPerView={4}
               autoCapitalize
               navigation
-              autoplay={{ delay: 2000 }}
+              autoplay={{ delay: 4000 }}
               pagination={{ clickable: true }}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
               {this.state.data.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div className="col-lg-2 .col-md-4 col-sm-2 SliderCart">
-                    <div>
-                      <img src={item.img} />
-                    </div>
-                    <div>{item.title}</div>
+                  <div className="col-lg-2 .col-md-4 col-sm-2 SliderCart Citycart">
+                    <div>{item}</div>
                   </div>
                 </SwiperSlide>
               ))}
@@ -101,4 +63,4 @@ export class MarqueSliderComponent extends Component {
     );
   }
 }
-export default MarqueSliderComponent;
+export default CitySliderComponent;

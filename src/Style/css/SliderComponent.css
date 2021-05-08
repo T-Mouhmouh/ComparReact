@@ -1,0 +1,42 @@
+.SliderParent {
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  box-shadow: 5px 2px 4px 2px #888888;
+  margin-bottom: 5px;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.SliderCart {
+  width: 150px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: x-large;
+  font-style: italic;
+  font-weight: initial;
+}
+
+.SliderRow {
+  margin-left: 31px;
+}
+
+.Citycart {
+  padding: 20px 0;
+  border: 2px solid green;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Citycart:hover {
+  background-color: darkgray;
+  border-radius: 1px;
+  box-shadow: 1px 1px 1px 2px black;
+}
