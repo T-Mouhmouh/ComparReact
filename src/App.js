@@ -5,6 +5,7 @@ import { SearchComponent } from "./components/SearchComponent";
 import { LoginComponent } from "./components/LoginComponent";
 import { MarqueSliderComponent } from "./components/MarqueSliderComponent";
 import { CitySliderComponent } from "./components/CitySliderComponent";
+import { CardComponent } from "./components/CardComponent";
 
 import "../src/Style/css/App.css";
 
@@ -13,8 +14,9 @@ function App() {
     <div class="app">
       <HeaderComponent />
       <SearchComponent />
-      <MarqueSliderComponent />
-      <CitySliderComponent />
+      <CardComponent />
+      {/* <MarqueSliderComponent />
+      <CitySliderComponent />*/}
     </div>
   );
 }
