@@ -9,7 +9,7 @@
   margin-bottom: 5px;
 }
 
-img {
+.MarqueImg {
   width: 150px;
   height: 150px;
 }
@@ -39,4 +39,8 @@ img {
   background-color: darkgray;
   border-radius: 1px;
   box-shadow: 1px 1px 1px 2px black;
+}
+
+.MarqueSlider :hover {
+  box-shadow: 2px 2px 2px 2px rgb(141, 135, 135);
 }

@@ -1,0 +1,32 @@
+.CardParent {
+  background-color: white;
+  min-height: 200px;
+  border-radius: 15px;
+  box-shadow: 5px 2px 4px 2px #888888;
+  margin-bottom: 20px;
+  width: 75%;
+}
+
+.imgCard {
+  height: 210px;
+  padding: 3px;
+  border-radius: 10% 3% 10% 3%;
+}
+
+.CardPrice {
+  font-size: 30px;
+  color: #2e6bff;
+}
+
+.CartBotomDiv {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.CardSliderDesc {
+  position: relative;
+}
+hr {
+  width: 90%;
+}

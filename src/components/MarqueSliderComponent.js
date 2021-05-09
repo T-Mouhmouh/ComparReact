@@ -78,17 +78,17 @@ export class MarqueSliderComponent extends Component {
               spaceBetween={10}
               slidesPerView={3}
               autoCapitalize
-              navigation
-              autoplay={{ delay: 2000 }}
+              // navigation
+              //autoplay={{ delay: 2000 }}
               pagination={{ clickable: true }}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
               {this.state.data.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div className="col-lg-2 .col-md-4 col-sm-2 SliderCart">
+                  <div className="col-lg-2 .col-md-4 col-sm-2 SliderCart MarqueSlider">
                     <div>
-                      <img src={item.img} />
+                      <img className="MarqueImg" src={item.img} />
                     </div>
                     <div>{item.title}</div>
                   </div>
