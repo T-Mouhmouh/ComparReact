@@ -43,8 +43,8 @@ export class CitySliderComponent extends Component {
               spaceBetween={5}
               slidesPerView={4}
               autoCapitalize
-              // navigation
-              //autoplay={{ delay: 4000 }}
+              navigation
+              autoplay={{ delay: 4000 }}
               pagination={{ clickable: true }}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}

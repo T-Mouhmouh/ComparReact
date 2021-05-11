@@ -2,7 +2,7 @@
   background-color: white;
   min-height: 200px;
   border-radius: 15px;
-  box-shadow: 5px 2px 4px 2px #888888;
+
   margin-bottom: 20px;
   width: 75%;
 }
@@ -29,4 +29,7 @@
 }
 hr {
   width: 90%;
+}
+.CardParent:hover {
+  box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
 }

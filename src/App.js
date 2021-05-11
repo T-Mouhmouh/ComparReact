@@ -15,8 +15,8 @@ function App() {
       <HeaderComponent />
       <SearchComponent />
       <CardComponent />
-      {/* <MarqueSliderComponent />
-      <CitySliderComponent />*/}
+      <MarqueSliderComponent />
+      <CitySliderComponent />
     </div>
   );
 }

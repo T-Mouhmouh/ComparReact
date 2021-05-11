@@ -78,8 +78,8 @@ export class MarqueSliderComponent extends Component {
               spaceBetween={10}
               slidesPerView={3}
               autoCapitalize
-              // navigation
-              //autoplay={{ delay: 2000 }}
+              navigation
+              autoplay={{ delay: 2000 }}
               pagination={{ clickable: true }}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
