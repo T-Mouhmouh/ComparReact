@@ -1,0 +1,65 @@
+.StoreComponentParent {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 15px;
+  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
+  width: 300px;
+  min-height: 300px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.StoreImg {
+  border-radius: 25% 0% 25% 25%;
+  margin-bottom: 5px;
+  margin-left: 5%;
+  width: 90%;
+}
+.StoreElement {
+  margin: 5px;
+  margin-bottom: 25px;
+}
+.storeName span {
+  background-color: aquamarine;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: bold;
+  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
+  padding-right: 65px;
+  padding-left: 65px;
+}
+
+.StoreTel span {
+  background-color: aquamarine;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: bold;
+  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
+  padding-right: 65px;
+  padding-left: 65px;
+}
+
+.StoreLocalisation span {
+  background-color: aquamarine;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: bold;
+  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
+  padding-right: 65px;
+  padding-left: 65px;
+}
+
+.StoreLink a {
+  background-color: aquamarine;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: bold;
+  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
+  padding-right: 65px;
+  padding-left: 65px;
+}
