@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { HeaderComponent } from "./components/HeaderComponent";
+import { StoreComponent } from "./components/StoreComponent";
 import { SearchComponent } from "./components/SearchComponent";
 import { LoginComponent } from "./components/LoginComponent";
 import { MarqueSliderComponent } from "./components/MarqueSliderComponent";
@@ -13,10 +14,13 @@ function App() {
   return (
     <div class="app">
       <HeaderComponent />
-      <SearchComponent />
-      <CardComponent />
-      <MarqueSliderComponent />
-      <CitySliderComponent />
+      {
+        //<SearchComponent />
+        //<CardComponent />
+        //<MarqueSliderComponent />
+        //<CitySliderComponent />
+      }
+      <StoreComponent />
     </div>
   );
 }
