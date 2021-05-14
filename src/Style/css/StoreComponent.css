@@ -2,7 +2,7 @@
   background-color: white;
   border-radius: 5px;
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 60px;
   box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
   width: 300px;
   min-height: 300px;
@@ -11,7 +11,7 @@
 }
 
 .StoreImg {
-  border-radius: 25% 0% 25% 25%;
+  border-radius: 50% 50% 50% 50%;
   margin-bottom: 5px;
   margin-left: 5%;
   width: 90%;
@@ -19,47 +19,47 @@
 .StoreElement {
   margin: 5px;
   margin-bottom: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: aquamarine;
+  background-color: azure;
+}
+.StoreElement span {
+  margin-left: 10px;
+}
+.StoreElement i {
+  color: yellowgreen;
+  float: left;
+  position: relative;
+  bottom: -5px;
+  left: 7px;
+  font-size: larger;
 }
 .storeName span {
-  background-color: aquamarine;
   padding: 3px;
-  border-radius: 5px;
   font-size: larger;
   font-weight: bold;
-  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
-  padding-right: 65px;
-  padding-left: 65px;
 }
 
 .StoreTel span {
-  background-color: aquamarine;
-  padding: 3px;
-  border-radius: 5px;
   font-size: larger;
   font-weight: bold;
-  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
-  padding-right: 65px;
-  padding-left: 65px;
 }
 
 .StoreLocalisation span {
-  background-color: aquamarine;
-  padding: 3px;
-  border-radius: 5px;
   font-size: larger;
   font-weight: bold;
-  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
-  padding-right: 65px;
-  padding-left: 65px;
 }
 
+.StoreImgparent {
+  margin: -60px 25px 10px 25px;
+}
 .StoreLink a {
-  background-color: aquamarine;
-  padding: 3px;
-  border-radius: 5px;
   font-size: larger;
   font-weight: bold;
-  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
-  padding-right: 65px;
-  padding-left: 65px;
+}
+
+.StoreLink:hover {
+  box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
+  cursor: pointer;
 }
