@@ -9,13 +9,16 @@ import { CitySliderComponent } from "./components/CitySliderComponent";
 import { CardComponent } from "./components/CardComponent";
 
 import "../src/Style/css/App.css";
+import "../src/Style/css/all.min.css";
+import "../src/Style/css/fontawesome.min.css";
 
 function App() {
   return (
     <div class="app">
+      <link rel="stylesheet" href="style css" />
       <HeaderComponent />
       {
-        //<SearchComponent />
+        <SearchComponent />
         //<CardComponent />
         //<MarqueSliderComponent />
         //<CitySliderComponent />

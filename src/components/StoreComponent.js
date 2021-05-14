@@ -24,16 +24,19 @@ export class StoreComponent extends Component {
     let { store } = this.state;
     return (
       <div class="StoreComponentParent container">
-        <div class="StoreElement  ">
+        <div class=" StoreImgparent ">
           <img className="StoreImg" src={store.img} />
         </div>
         <div class=" StoreElement storeName">
+          <i class="fas fa-store"></i>
           <span>{store.name}</span>
         </div>
         <div class="StoreElement  StoreTel">
+          <i class="fas fa-phone-square-alt"></i>
           <span>{store.Tel}</span>
         </div>
         <div class="StoreElement  StoreLocalisation">
+          <i class="fas fa-map-marker-alt"></i>
           <span>{store.City}</span>
         </div>
         <div class=" StoreElement StoreLink">
