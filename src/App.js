@@ -7,6 +7,7 @@ import { LoginComponent } from "./components/LoginComponent";
 import { MarqueSliderComponent } from "./components/MarqueSliderComponent";
 import { CitySliderComponent } from "./components/CitySliderComponent";
 import { CardComponent } from "./components/CardComponent";
+import { FpImgSlider } from "./components/FpImgSlider";
 
 import "../src/Style/css/App.css";
 import "../src/Style/css/all.min.css";
@@ -23,7 +24,11 @@ function App() {
         //<MarqueSliderComponent />
         //<CitySliderComponent />
       }
-      <StoreComponent />
+
+      <div className="row center">
+        <FpImgSlider />
+        <StoreComponent />
+      </div>
     </div>
   );
 }

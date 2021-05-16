@@ -43,3 +43,19 @@
 .MarqueSlider :hover {
   box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
 }
+
+.FpSliderImg {
+  width: auto !important;
+}
+
+.FpImg {
+  width: 614px;
+  height: 386px;
+}
+
+.swiper-button-next {
+  right: 110px !important;
+}
+.swiper-button-prev {
+  left: 110px !important;
+}
