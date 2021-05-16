@@ -25,7 +25,7 @@ function App() {
         //<CitySliderComponent />
       }
 
-      <div className="row center">
+      <div className="row ">
         <FpImgSlider />
         <StoreComponent />
       </div>
