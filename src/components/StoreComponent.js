@@ -23,7 +23,7 @@ export class StoreComponent extends Component {
   render() {
     let { store } = this.state;
     return (
-      <div class="StoreComponentParent container">
+      <div class="StoreComponentParent col-4">
         <div class=" StoreImgparent ">
           <img className="StoreImg" src={store.img} />
         </div>
