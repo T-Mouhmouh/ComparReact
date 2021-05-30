@@ -1,0 +1,54 @@
+.FpDescriptionComponentParent {
+  background-color: white;
+  margin-left: 100px;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
+}
+
+.FpDescriptionDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.Section :last-child {
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.Section {
+  border-right: inset;
+  margin-bottom: 10px;
+}
+
+.Section i {
+  color: yellowgreen;
+  float: left;
+  position: relative;
+  bottom: -5px;
+  left: 7px;
+  font-size: larger;
+}
+.SectionPrice i {
+  top: 10px;
+}
+.SectionPrice {
+  border: none !important;
+}
+.FpPrice {
+  color: limegreen !important;
+  font-size: x-large;
+}
+
+.SectionDesc {
+  font-weight: 500;
+  margin-top: 10px;
+  border-top: inset 0.5px;
+}
+.FpDesc {
+  font-size: smaller;
+}

@@ -8,6 +8,8 @@ import { MarqueSliderComponent } from "./components/MarqueSliderComponent";
 import { CitySliderComponent } from "./components/CitySliderComponent";
 import { CardComponent } from "./components/CardComponent";
 import { FpImgSlider } from "./components/FpImgSlider";
+import { FpDescriptionComponent } from "./components/FpDescriptionComponent";
+import { CompanyProductComponent } from "./components/CompanyProductComponent";
 
 import "../src/Style/css/App.css";
 import "../src/Style/css/all.min.css";
@@ -18,17 +20,22 @@ function App() {
     <div class="app">
       <link rel="stylesheet" href="style css" />
       <HeaderComponent />
-      {
-        <SearchComponent />
-        //<CardComponent />
-        //<MarqueSliderComponent />
-        //<CitySliderComponent />
-      }
-
+      <CompanyProductComponent />
+      {/*   
       <div className="row center">
-        <FpImgSlider />
+        //<FpImgSlider />
         <StoreComponent />
       </div>
+      <SearchComponent />
+      <FpDescriptionComponent />
+
+      <CardComponent />
+      <MarqueSliderComponent />
+      <CitySliderComponent />
+      
+      */}
+
+      <FpDescriptionComponent />
     </div>
   );
 }

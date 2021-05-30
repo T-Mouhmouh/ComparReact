@@ -33,7 +33,7 @@ export class StoreComponent extends Component {
         </div>
         <div class="StoreElement  StoreTel">
           <i class="fas fa-phone-square-alt"></i>
-          <span>{store.Tel}</span>
+          <span>{store.Tel} </span>
         </div>
         <div class="StoreElement  StoreLocalisation">
           <i class="fas fa-map-marker-alt"></i>

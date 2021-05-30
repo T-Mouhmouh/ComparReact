@@ -20,24 +20,20 @@ import "swiper/components/scrollbar/scrollbar.scss";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 let DemoData = [
   {
-    img:
-      "https://maroc-diplomatique.net/wp-content/uploads/2018/10/1024px-Renault_2009_logo.svg-e1538403417655.png",
+    img: "https://maroc-diplomatique.net/wp-content/uploads/2018/10/1024px-Renault_2009_logo.svg-e1538403417655.png",
     title: "Renult",
   },
   {
-    img:
-      "https://i.pinimg.com/originals/f4/97/94/f49794ec7ca66c00608fefccf711cd55.jpg",
+    img: "https://i.pinimg.com/originals/f4/97/94/f49794ec7ca66c00608fefccf711cd55.jpg",
     title: "Mercides",
   },
 
   {
-    img:
-      "https://www.zastavki.com/pictures/640x480/2011Brands_Audi_logo_027961_29.jpg",
+    img: "https://www.zastavki.com/pictures/640x480/2011Brands_Audi_logo_027961_29.jpg",
     title: "Audi",
   },
   {
-    img:
-      "https://img-4.linternaute.com/2jQvz-_kz_EwazKCRMIWLAZFLRE=/450x/smart/96554f639fa249b1ae8cebaa7239a4bf/ccmcms-linternaute/22661525.png",
+    img: "https://img-4.linternaute.com/2jQvz-_kz_EwazKCRMIWLAZFLRE=/450x/smart/96554f639fa249b1ae8cebaa7239a4bf/ccmcms-linternaute/22661525.png",
     title: "Peugeot ",
   },
   {
@@ -45,8 +41,7 @@ let DemoData = [
     title: "Fiat",
   },
   {
-    img:
-      "https://www.pngkey.com/png/detail/67-671397_land-rover-range-rover-logo.png",
+    img: "https://www.pngkey.com/png/detail/67-671397_land-rover-range-rover-logo.png",
     title: "RangeRover",
   },
   {
@@ -86,7 +81,7 @@ export class MarqueSliderComponent extends Component {
             >
               {this.state.data.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div className="col-lg-2 .col-md-4 col-sm-2 SliderCart MarqueSlider">
+                  <div className="col-lg-2 col-md-4 col-sm-2 SliderCart MarqueSlider">
                     <div>
                       <img className="MarqueImg" src={item.img} />
                     </div>
