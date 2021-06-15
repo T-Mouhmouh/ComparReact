@@ -68,6 +68,7 @@ export class MarqueSliderComponent extends Component {
     return (
       <>
         <div class="MarqueParent container">
+          <p class="ChoiseTitle">Choisissez une Marque</p>
           <div className="row SliderRow">
             <Swiper
               spaceBetween={10}

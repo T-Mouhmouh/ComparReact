@@ -37,7 +37,8 @@ export class CitySliderComponent extends Component {
     console.log("render:", data);
     return (
       <>
-        <div class="SLiderParent container">
+        <div class="SliderParent container">
+          <p class="ChoiseTitle">Choisissez une Ville</p>
           <div className="row SliderRow">
             <Swiper
               spaceBetween={5}
