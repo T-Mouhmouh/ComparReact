@@ -1,6 +1,5 @@
 .SliderParent {
-  background-color: white;
-  border-radius: 10px;
+  border: 2px solid green;
   margin: auto;
   padding: 10px;
   margin-top: 15px;
@@ -8,12 +7,24 @@
   box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
   margin-bottom: 5px;
 }
-
+.MarqueParent {
+  border: 2px solid green;
+}
 .MarqueImg {
   width: 150px;
   height: 150px;
 }
-
+.ChoiseTitle {
+  text-align: start;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-bottom: 4px;
+}
 .SliderCart {
   width: 150px;
   margin: 10px;
