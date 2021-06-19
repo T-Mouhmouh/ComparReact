@@ -1,3 +1,7 @@
+.container-fluid {
+  margin: 20px 0px 20px 0px;
+}
+
 .inline {
   display: inline-block;
   padding: 10px;
