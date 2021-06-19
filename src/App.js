@@ -12,6 +12,7 @@ import { FpDescriptionComponent } from "./components/FpDescriptionComponent";
 import { CompanyProductComponent } from "./components/CompanyProductComponent";
 import { HomePage } from "./Page/HomePage";
 import { LoginPage } from "./Page/LoginPage";
+import { ShearchResultPage } from "./Page/ShearchResultPage";
 
 import "../src/Style/css/App.css";
 import "../src/Style/css/all.min.css";
@@ -35,8 +36,9 @@ function App() {
       <CitySliderComponent />
       <FpDescriptionComponent />
      
-      <HomePage /> */}
-      <LoginPage />
+      <HomePage /> 
+      <LoginPage />*/}
+      <ShearchResultPage />
     </div>
   );
 }
