@@ -1,5 +1,6 @@
 .app {
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 10px;
   background-image: url(/src/Style/img/paper.png);
 }
