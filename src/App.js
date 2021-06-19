@@ -13,6 +13,7 @@ import { CompanyProductComponent } from "./components/CompanyProductComponent";
 import { HomePage } from "./Page/HomePage";
 import { LoginPage } from "./Page/LoginPage";
 import { ShearchResultPage } from "./Page/ShearchResultPage";
+import { FicheProduitPage } from "./Page/FicheProduitPage";
 
 import "../src/Style/css/App.css";
 import "../src/Style/css/all.min.css";
@@ -37,8 +38,10 @@ function App() {
       <FpDescriptionComponent />
      
       <HomePage /> 
-      <LoginPage />*/}
+      <LoginPage />
       <ShearchResultPage />
+      <FicheProduitPage />*/}
+      <FicheProduitPage />
     </div>
   );
 }
