@@ -12,6 +12,7 @@ import { FpDescriptionComponent } from "./components/FpDescriptionComponent";
 import { CompanyProductComponent } from "./components/CompanyProductComponent";
 import { HomePage } from "./Page/HomePage";
 import { LoginPage } from "./Page/LoginPage";
+import { RegistrationPage } from "./Page/RegistrationPage";
 import { ShearchResultPage } from "./Page/ShearchResultPage";
 import { FicheProduitPage } from "./Page/FicheProduitPage";
 
@@ -40,8 +41,10 @@ function App() {
       <HomePage /> 
       <LoginPage />
       <ShearchResultPage />
-      <FicheProduitPage />*/}
+      <FicheProduitPage />     
       <FicheProduitPage />
+      <LoginPage />*/}
+      <RegistrationPage />
     </div>
   );
 }
