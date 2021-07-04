@@ -12,6 +12,8 @@ import { FpDescriptionComponent } from "./components/FpDescriptionComponent";
 import { CompanyProductComponent } from "./components/CompanyProductComponent";
 import { HomePage } from "./Page/HomePage";
 import { LoginPage } from "./Page/LoginPage";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RegistrationPage } from "./Page/RegistrationPage";
 import { ShearchResultPage } from "./Page/ShearchResultPage";
 import { FicheProduitPage } from "./Page/FicheProduitPage";
@@ -41,10 +43,18 @@ function App() {
       <HomePage /> 
       <LoginPage />
       <ShearchResultPage />
-      <FicheProduitPage />     
-      <FicheProduitPage />
-      <LoginPage />*/}
-      <RegistrationPage />
+      <FicheProduitPage />  
+      <RegistrationPage />*/}
+
+      <Router>
+        <Switch>
+          <Route exact path="/Login" component={LoginPage} />
+          <Route exact path="/Home" component={HomePage} />
+          <Route exact path="/Shearch" component={ShearchResultPage} />
+          <Route exact path="/FicheProduit" component={FicheProduitPage} />
+          <Route exact path="/Registration" component={RegistrationPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
