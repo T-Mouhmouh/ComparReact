@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import "../Style/css/login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
+var visitorConected;
 export class LoginComponent extends Component {
   constructor(props) {
     super(props);
@@ -9,24 +10,33 @@ export class LoginComponent extends Component {
       login: "",
       password: "",
       user_type: "visitor", //visitor or user
+      UserConected: { data: "", msg: "" },
     };
   }
 
-  submitLogin = (e) => {
+  submitLogin = async (e) => {
     let { user_type } = this.state;
+    var connectedUser = {
+      data: "",
+      msg: "",
+    };
     e.preventDefault();
-    console.log("im in login Component");
+
     if (this.state.user_type == "visitor") {
-      var check = LoginService.CheckLoginVisitor(
+      connectedUser = await LoginService.CheckLoginVisitor(
         this.state.login,
         this.state.password
       );
     } else if (user_type == "company") {
-      var check = LoginService.CheckLoginUser(
+      connectedUser = await LoginService.CheckLoginUser(
         this.state.login,
         this.state.password
       );
     }
+
+    console.log("im in login Component :", connectedUser);
+    this.setState({ UserConected: connectedUser });
+    console.log("im in login Component :", this.state.UserConected);
   };
 
   render() {
@@ -37,6 +47,7 @@ export class LoginComponent extends Component {
       this.state.user_type == "company" ? isselectedTypeClass : "";
     return (
       <div>
+        trrr : {this.state.UserConected.msg}
         <section className="container-fluid">
           <secion className="row justify-content-center">
             <section className="col-12 col-sm-6 col-md-3">
@@ -66,7 +77,6 @@ export class LoginComponent extends Component {
                 <div className="mb-3">
                   <label className="form-label fw-bold">Email</label>
                   <input
-                    type="email"
                     className="form-control"
                     id="email"
                     name="email"
