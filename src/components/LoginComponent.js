@@ -2,7 +2,14 @@ import React, { Component, useState } from "react";
 import "../Style/css/login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
-var visitorConected;
+import { HomePage } from "../Page/HomePage";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
 export class LoginComponent extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +17,7 @@ export class LoginComponent extends Component {
       login: "",
       password: "",
       user_type: "visitor", //visitor or user
-      UserConected: { data: "", msg: "" },
+      UserConected: { data: "", msg: "", success: false },
     };
   }
 
@@ -19,6 +26,7 @@ export class LoginComponent extends Component {
     var connectedUser = {
       data: "",
       msg: "",
+      success: false,
     };
     e.preventDefault();
 
@@ -27,6 +35,8 @@ export class LoginComponent extends Component {
         this.state.login,
         this.state.password
       );
+
+      console.log(this.state.UserConected);
     } else if (user_type == "company") {
       connectedUser = await LoginService.CheckLoginUser(
         this.state.login,
@@ -40,6 +50,7 @@ export class LoginComponent extends Component {
   };
 
   render() {
+    let { UserConected } = this.state;
     var isselectedTypeClass = "selectedType";
     var visitorclass =
       this.state.user_type == "visitor" ? isselectedTypeClass : "";
@@ -47,7 +58,8 @@ export class LoginComponent extends Component {
       this.state.user_type == "company" ? isselectedTypeClass : "";
     return (
       <div>
-        trrr : {this.state.UserConected.msg}
+        {UserConected.success ? <Redirect to="/Home" /> : ""}
+        err msg : {this.state.UserConected.msg}
         <section className="container-fluid">
           <secion className="row justify-content-center">
             <section className="col-12 col-sm-6 col-md-3">

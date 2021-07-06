@@ -4,6 +4,7 @@ const LoginService = {
   async CheckLoginVisitor(login, password) {
     var visitor = {
       data: "",
+      success: false,
       msg: "",
     };
     await axios
@@ -17,15 +18,23 @@ const LoginService = {
       .then((data) => {
         if (data.status == 200) {
           visitor.data = data.data;
-          visitor.msg = "ok ! :)";
+          visitor.success = true;
+          visitor.msg = "ok";
         } else if (data.status == 204) {
           visitor.data = data.data;
-          visitor.msg = "NOT ok :(";
+          visitor.success = false;
+          visitor.msg = "ko";
         } else {
-          visitor.msg = "Try later ! ";
+          visitor.success = false;
+          visitor.msg = "try later !";
         }
+      })
+      .catch((err) => {
+        console.log(err);
+        visitor.success = false;
+        visitor.msg = err.stack;
+        visitor.data = "";
       });
-
     console.log("in service :", visitor);
     return visitor;
   },
