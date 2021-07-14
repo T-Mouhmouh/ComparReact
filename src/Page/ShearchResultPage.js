@@ -1,4 +1,5 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, PropsTypes } from "react";
+
 import "../Style/css/FpDescriptionComponent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
@@ -14,17 +15,25 @@ export class ShearchResultPage extends Component {
     super(props);
 
     this.state = {
-      marque: "",
-      model: "",
-      city: "",
+      tt: "",
+      DataToRanderInCard: { data: [] },
     };
   }
-
+  DataToRender = (data) => {
+    console.log("data on parent : ", data);
+    this.state.DataToRanderInCard = data;
+    this.setState({
+      tt: "btt",
+      DataToRanderInCard: data,
+    });
+    this.forceUpdate();
+  };
   render() {
     return (
       <>
-        <SearchComponent />
-        <CardComponent />
+        {this.state.tt}
+        <SearchComponent DataToRender={this.DataToRender} />
+        <CardComponent CardDataToRander={this.state.DataToRanderInCard} />
       </>
     );
   }

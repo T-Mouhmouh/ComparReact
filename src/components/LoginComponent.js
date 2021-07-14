@@ -59,7 +59,6 @@ export class LoginComponent extends Component {
     return (
       <div>
         {UserConected.success ? <Redirect to="/Home" /> : ""}
-        err msg : {this.state.UserConected.msg}
         <section className="container-fluid">
           <secion className="row justify-content-center">
             <section className="col-12 col-sm-6 col-md-3">
@@ -120,6 +119,8 @@ export class LoginComponent extends Component {
                 <button type="submit" className="btn btn-primary btn-lg">
                   Se connecter
                 </button>
+                <div>{this.state.UserConected.msg}</div>
+
                 <div>
                   <div className="inline">Pas encore inscrit?</div>
                   <div className="inline">

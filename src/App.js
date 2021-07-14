@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
+import React, { Component, useState } from "react";
 import "./App.css";
 import { HeaderComponent } from "./components/HeaderComponent";
+import ClassBased from "./components/ClassBased";
 import { StoreComponent } from "./components/StoreComponent";
 import { SearchComponent } from "./components/SearchComponent";
 import { LoginComponent } from "./components/LoginComponent";
@@ -22,12 +24,14 @@ import "../src/Style/css/App.css";
 import "../src/Style/css/all.min.css";
 import "../src/Style/css/fontawesome.min.css";
 
-function App() {
-  return (
-    <div class="app">
-      <link rel="stylesheet" href="style css" />
-      <HeaderComponent />
-      {/*
+export class App extends Component {
+  render() {
+    return (
+      <div class="app">
+        <link rel="stylesheet" href="style css" />
+
+        <HeaderComponent />
+        {/*
       <CompanyProductComponent />  
       <div className="row center">
         //<FpImgSlider />
@@ -46,18 +50,19 @@ function App() {
       <FicheProduitPage />  
       <RegistrationPage />*/}
 
-      <Router>
-        <Switch>
-          <Route exact path="/Login" component={LoginPage} />
-          <Route exact path="/" component={LoginPage} />
-          <Route exact path="/Home" component={HomePage} />
-          <Route exact path="/Shearch" component={ShearchResultPage} />
-          <Route exact path="/FicheProduit" component={FicheProduitPage} />
-          <Route exact path="/Registration" component={RegistrationPage} />
-        </Switch>
-      </Router>
-    </div>
-  );
+        <Router>
+          <Switch>
+            <Route exact path="/Login" component={LoginPage} />
+            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/Home" component={HomePage} />
+            <Route exact path="/Shearch" component={ShearchResultPage} />
+            <Route exact path="/FicheProduit" component={FicheProduitPage} />
+            <Route exact path="/Registration" component={RegistrationPage} />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -17,8 +17,7 @@ let DemoData = [
     description: " bla bla bla ..",
   },
   {
-    img:
-      "https://s3-eu-west-1.amazonaws.com/staticeu.izmocars.com/vehicleimages/640x480/dealers/vowpc4407/VOWPC4407_VO009145_117269.jpg",
+    img: "https://s3-eu-west-1.amazonaws.com/staticeu.izmocars.com/vehicleimages/640x480/dealers/vowpc4407/VOWPC4407_VO009145_117269.jpg",
     numberImg: 3,
     price: "250",
     marque: "Renault",
@@ -44,6 +43,7 @@ export class CardComponent extends Component {
 
     this.state = {
       data: [],
+      CardDataToRander: [],
     };
   }
 
@@ -51,14 +51,17 @@ export class CardComponent extends Component {
     this.setState({
       data: DemoData,
     });
+
+    console.log("in card :", this.props.CardDataToRander);
   }
 
   render() {
-    let { data } = this.state;
-    console.log("card data :", data);
+    let { data, CardDataToRander } = this.state;
+
+    console.log("in card :", this.props.CardDataToRander);
     return (
       <>
-        {this.state.data.map((item, index) => (
+        {this.props.CardDataToRander?.data?.map((item, index) => (
           <div className="CardParent container">
             <div className=" row center">
               <div className="CardSliderImg col-lg-4  col-sm-12">
@@ -66,13 +69,13 @@ export class CardComponent extends Component {
               </div>
               <div className="CardSliderDesc col-lg-8  col-sm-12">
                 <div className="CardPrice">{item.price} DH</div>
-                <div className="CardDesc">{item.description} </div>
+                <div className="CardDesc">{item.descriptionCar} </div>
 
                 <div className="CartBotomDiv">
                   <hr />
                   <div className=" row center">
                     <div className="CardMarque  col-lg-6  col-sm-6">
-                      {item.marque}
+                      {item.mark}
                     </div>
                     <div className="CardModel col-lg-6  col-sm-6">
                       {item.model}

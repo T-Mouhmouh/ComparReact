@@ -2,34 +2,84 @@ import React, { Component, useState } from "react";
 import "../Style/css/login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
+import RegistrationService from "../services/RegistrationService";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+var enregistrationObjet = {
+  id_visitor: 0,
+  login: "",
+  pass: "",
+  fullName: "",
+  phoneNumber: "",
+  city: "",
+  deleted: 1,
+};
 export class RegistrationComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       login: "",
       password: "",
-      user_type: "visitor", //visitor or user
+      userType: "Particulier", //visitor or user
+      UserConected: { data: "", msg: "", success: false },
     };
   }
 
-  submitLogin = (e) => {
+  submitRegistration = async (e) => {
+    var RegistrationUser = {
+      data: "",
+      msg: "",
+      success: false,
+    };
     let { user_type } = this.state;
     e.preventDefault();
-    console.log("im in login Component");
-    if (this.state.user_type == "visitor") {
-      var check = LoginService.CheckLoginVisitor(
-        this.state.login,
-        this.state.password
-      );
-    } else if (user_type == "company") {
-      var check = LoginService.CheckLoginUser(
-        this.state.login,
-        this.state.password
-      );
+
+    RegistrationUser = await RegistrationService.Registration(
+      enregistrationObjet
+    );
+    this.setState({ UserConected: RegistrationUser });
+  };
+  setUserType = (e) => {
+    if (e.target.id == "Particulier") {
+      this.setState({
+        userType: "Particulier",
+      });
+      enregistrationObjet.userType = "Particulier";
+    } else if (e.target.id == "Professionnel") {
+      this.setState({
+        userType: "Professionnel",
+      });
+      enregistrationObjet.userType = "Professionnel";
     }
+  };
+  enChangeelement = (e) => {
+    // this.setState({ [e.target.name]: e.target.value }); gooodd
+    switch (e.target.id) {
+      case "email":
+        enregistrationObjet.login = e.target.value;
+        break;
+      case "passwd":
+        enregistrationObjet.pass = e.target.value;
+        break;
+      case "fullName":
+        enregistrationObjet.fullName = e.target.value;
+        break;
+      case "tel":
+        enregistrationObjet.phoneNumber = e.target.value;
+        break;
+      case "ville":
+        enregistrationObjet.city = e.target.value;
+        break;
+    }
+    //    console.log("trtrtrtrtr", enregistrationObjet);
   };
 
   render() {
+    let { UserConected } = this.state;
     var isselectedTypeClass = "selectedType";
     var visitorclass =
       this.state.user_type == "visitor" ? isselectedTypeClass : "";
@@ -37,9 +87,10 @@ export class RegistrationComponent extends Component {
       this.state.user_type == "company" ? isselectedTypeClass : "";
     return (
       <div>
+        {UserConected.success ? <Redirect to="/Shearch" /> : ""}
         <section className="container-fluid">
           <secion className="row justify-content-center">
-            <form className="form-container" onSubmit={this.submitLogin}>
+            <form className="form-container" onSubmit={this.submitRegistration}>
               {/* <div className="mb-3 center">
                 <div
                   className={visitorclass + " inline"}
@@ -71,10 +122,11 @@ export class RegistrationComponent extends Component {
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                        checked
+                        name="ParticulierInput"
+                        id="Particulier"
+                        value="Particulier"
+                        checked={this.state.userType === "Particulier"}
+                        onChange={this.setUserType}
                       />
                       <label class="form-check-label" for="exampleRadios1">
                         Particulier
@@ -87,9 +139,11 @@ export class RegistrationComponent extends Component {
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios2"
-                        value="option2"
+                        name="ProfessionnelInput"
+                        id="Professionnel"
+                        value="Professionnel"
+                        checked={this.state.userType === "Professionnel"}
+                        onChange={this.setUserType}
                       />
                       <label class="form-check-label" for="exampleRadios2">
                         Professionnel
@@ -106,11 +160,7 @@ export class RegistrationComponent extends Component {
                     id="email"
                     name="email"
                     placeholder="exemple@domaine.com"
-                    onChange={(e) => {
-                      this.setState({
-                        login: e.target.value,
-                      });
-                    }}
+                    onChange={this.enChangeelement}
                   />
                 </div>
 
@@ -121,53 +171,37 @@ export class RegistrationComponent extends Component {
                     className="form-control"
                     id="passwd"
                     placeholder="Mot de passe"
-                    onChange={(e) => {
-                      this.setState({
-                        password: e.target.value,
-                      });
-                    }}
+                    onChange={this.enChangeelement}
                   />
                 </div>
                 <div className="mb-3 col-6">
                   <label className="form-label fw-bold">Nom et Prénom </label>
                   <input
-                    type="password"
+                    type="text"
                     className="form-control"
-                    id="passwd"
+                    id="fullName"
                     placeholder="Nom et Prénom"
-                    onChange={(e) => {
-                      this.setState({
-                        password: e.target.value,
-                      });
-                    }}
+                    onChange={this.enChangeelement}
                   />
                 </div>
                 <div className="mb-3 col-6">
                   <label className="form-label fw-bold">Télephone</label>
                   <input
-                    type="password"
+                    type="text"
                     className="form-control"
-                    id="passwd"
+                    id="tel"
                     placeholder="Télephone"
-                    onChange={(e) => {
-                      this.setState({
-                        password: e.target.value,
-                      });
-                    }}
+                    onChange={this.enChangeelement}
                   />
                 </div>
                 <div className="mb-3 col-6">
                   <label className="form-label fw-bold">Ville</label>
                   <input
-                    type="password"
+                    type="text"
                     className="form-control"
-                    id="passwd"
+                    id="ville"
                     placeholder="Ville"
-                    onChange={(e) => {
-                      this.setState({
-                        password: e.target.value,
-                      });
-                    }}
+                    onChange={this.enChangeelement}
                   />
                 </div>
               </div>
