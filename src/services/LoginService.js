@@ -55,13 +55,22 @@ const LoginService = {
       .then((data) => {
         if (data.status == 200) {
           User.data = data.data;
-          User.msg = "ok ! :)";
+          User.success = true;
+          User.msg = "ok";
         } else if (data.status == 204) {
           User.data = data.data;
-          User.msg = "NOT ok :(";
+          User.success = false;
+          User.msg = "ko";
         } else {
-          User.msg = "Try later ! ";
+          User.success = false;
+          User.msg = "try later !";
         }
+      })
+      .catch((err) => {
+        console.log(err);
+        User.success = false;
+        User.msg = err.stack;
+        User.data = "";
       });
 
     console.log("in service :", User);
