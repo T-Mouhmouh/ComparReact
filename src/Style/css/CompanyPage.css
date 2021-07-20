@@ -1,0 +1,12 @@
+.description {
+  align-self: center;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  max-height: 245px;
+  min-height: 100px;
+  width: 300px;
+  box-shadow: 0 0 11px rgb(136 129 177 / 57%);
+}

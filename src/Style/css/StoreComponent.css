@@ -58,7 +58,9 @@
   font-size: larger;
   font-weight: bold;
 }
-
+.StoreLink {
+  background-color: yellowgreen;
+}
 .StoreLink:hover {
   box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
   cursor: pointer;

@@ -1,6 +1,7 @@
 .CompanyProductCard {
   min-height: 150px;
   margin-top: 10px;
+  width: 90% !important;
 }
 
 .imgCard {

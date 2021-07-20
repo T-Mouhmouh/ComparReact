@@ -32,4 +32,16 @@ hr {
 }
 .CardParent:hover {
   box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
+  cursor: auto;
+}
+
+.fa-heart {
+  float: right;
+  margin-top: 5px;
+  font-size: initial;
+  color: red;
+}
+.fa-heart:hover {
+  cursor: pointer;
+  color: coral !important;
 }

@@ -14,11 +14,17 @@ import { FpDescriptionComponent } from "./components/FpDescriptionComponent";
 import { CompanyProductComponent } from "./components/CompanyProductComponent";
 import { HomePage } from "./Page/HomePage";
 import { LoginPage } from "./Page/LoginPage";
-
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RegistrationPage } from "./Page/RegistrationPage";
 import { ShearchResultPage } from "./Page/ShearchResultPage";
 import { FicheProduitPage } from "./Page/FicheProduitPage";
+import { CompanyPage } from "./Page/CompanyPage";
+
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import $ from "jquery";
+import Popper from "popper.js";
 
 import "../src/Style/css/App.css";
 import "../src/Style/css/all.min.css";
@@ -58,6 +64,12 @@ export class App extends Component {
             <Route exact path="/Shearch" component={ShearchResultPage} />
             <Route exact path="/FicheProduit" component={FicheProduitPage} />
             <Route exact path="/Registration" component={RegistrationPage} />
+            <Route exact path="/CompanyPage/:id" component={CompanyPage} />
+            <Route
+              exact
+              path="/FicheProduitPage"
+              component={FicheProduitPage}
+            />
           </Switch>
         </Router>
       </div>

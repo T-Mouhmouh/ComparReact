@@ -46,9 +46,9 @@ export class FpImgSlider extends Component {
           <Swiper
             spaceBetween={10}
             slidesPerView={1}
-            autoCapitalize
+            //autoCapitalize
             navigation
-            autoplay={{ delay: 6000 }}
+            //autoplay={{ delay: 6000 }}
             pagination={{ clickable: true }}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}

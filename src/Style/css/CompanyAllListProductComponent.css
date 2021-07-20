@@ -1,0 +1,45 @@
+.CardList {
+  background-color: white;
+  height: 120px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  width: 75%;
+}
+
+.father {
+  margin-top: 60px;
+}
+.imgCardList {
+  width: 144px !important;
+  height: 120px !important;
+  padding: 3px;
+  border-radius: 10% 0% 0% 10%;
+  margin-left: -26px;
+}
+
+.CardPriceList {
+  font-size: 17px;
+  float: right;
+  font-weight: bold;
+}
+
+.CartBotomDiv {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.CardSliderDesc {
+  position: relative;
+}
+hr {
+  width: 90%;
+}
+.CardParent:hover {
+  box-shadow: 0 0 11px rgba(115, 96, 223, 0.575);
+}
+
+a,
+a:hover {
+  color: black;
+}

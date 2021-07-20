@@ -16,53 +16,66 @@ export class FpDescriptionComponent extends Component {
       city: "",
     };
   }
-
+  componentDidMount() {
+    console.log("in description comp :", this.props.car);
+  }
   render() {
+    var fuel_type = "";
+    if (this.props.car.fuel_type == "d") {
+      fuel_type = "Diesel";
+    }
+    if (this.props.car.fuel_type == "e") {
+      fuel_type = "Essence";
+    }
+    if (this.props.car.fuel_type == "h") {
+      fuel_type = "Hybride";
+    }
+
     return (
       <div class="FpDescriptionComponentParent   col-6  container">
         <div class="FpDescriptionComponentCont  center">
           <div className="row">
             <div class="Section SectionPrice col-lg-8  col-sm-12 ">
               <i class="fas fa-money-bill-wave"></i>
-              <span className="FpPrice">250 DH</span>
+              <span className="FpPrice">{this.props.car.price} DH</span>
+            </div>
+            <div class="Section SectionPrice col-lg-4  col-sm-12 ">
+              <i class="far fa-eye"></i>
+              <span className="FpPrice">{this.props.car.mark}</span>
             </div>
           </div>
 
           <div className="row">
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-users"></i>
-              <span>6</span>
+              <span>{this.props.car.nbrPlaces}</span>
             </div>
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-sitemap"></i>
-              <span>Auto</span>
+              <span>{this.props.car.gearBox}</span>
             </div>
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-gas-pump"></i>
-              <span>Diesel</span>
+              <span>{fuel_type}</span>
             </div>
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-route"></i>
-              <span>150 00 Km</span>
+              <span>{this.props.car.mileage} Km</span>
             </div>
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-palette"></i>
-              <span>Rouge</span>
+              <span>{this.props.car.color}</span>
+            </div>
+            <div class="Section  col-lg-4  col-sm-12 ">
+              <i class="fas fa-calendar-alt"></i>
+              <span>{this.props.car.year}</span>
             </div>
           </div>
 
           <div className="row">
             <div class=" SectionDesc col-lg-10  col-sm-12 ">
               <span className="Desc">Description :</span>
-              <p className="FpDesc">
-                La RENAULT CLIO 4 DIESEL est une voiture élégante. Il a 5 sièges
-                et est équipé d'une transmission automatique. Réserver une
-                voiture de location RENAULT CLIO 4 DIESEL en ligne, louer une
-                voiture à l'aéroport de Tanger, de Meknès, et à Marrakech. La
-                clio 4 de Renault avec boîte de vitesses automatique allie
-                modernité et confort. Il dispose de la climatisation pour
-                s'adapter à toute température.
-              </p>
+              <p className="FpDesc">{this.props.car.descriptionCar}</p>
             </div>
           </div>
         </div>
