@@ -2,9 +2,20 @@ import React, { Component, useState } from "react";
 import "../Style/css/CardComponent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
-import { Link } from "react-router-dom";
+import WishListService from "../services/WishListService.js";
 
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { browserhistory } from "react-router";
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
+import { FicheProduitPage } from "../Page/FicheProduitPage";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+var img = "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG";
 let DemoData = [
   {
     img: "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG",
@@ -44,53 +55,79 @@ export class CardComponent extends Component {
     this.state = {
       data: [],
       CardDataToRander: [],
+      selectedindex: "",
+      FpDatatoRender: {},
+      isfav: false,
     };
   }
 
   componentDidMount() {
+    var WishListCar = localStorage.getItem("WishListCar");
+    var WishListCarJ = JSON.parse(WishListCar);
+    console.log("WishListCar", WishListCar);
     this.setState({
       data: DemoData,
     });
-
-    console.log("in card :", this.props.CardDataToRander);
   }
-
+  addFavorit = (id_car) => {};
   render() {
     let { data, CardDataToRander } = this.state;
-
-    console.log("in card :", this.props.CardDataToRander);
     return (
       <>
         {this.props.CardDataToRander?.data?.map((item, index) => (
-          <div className="CardParent container">
-            <div className=" row center">
-              <div className="CardSliderImg col-lg-4  col-sm-12">
-                <img className="imgCard" src={item.img}></img>
+          <div>
+            <div className="CardParent container">
+              <div onClick={this.addFavorit(item.id_car)}>
+                {!this.state.isfav && (
+                  <i
+                    class="far fa-heart "
+                    onClick={() => this.setState({ isfav: !this.state.isfav })}
+                  ></i>
+                )}
+                {this.state.isfav && (
+                  <i
+                    class="fas fa-heart"
+                    onClick={() => this.setState({ isfav: !this.state.isfav })}
+                  ></i>
+                )}
               </div>
-              <div className="CardSliderDesc col-lg-8  col-sm-12">
-                <div className="CardPrice">{item.price} DH</div>
-                <div className="CardDesc">{item.descriptionCar} </div>
 
-                <div className="CartBotomDiv">
-                  <hr />
-                  <div className=" row center">
-                    <div className="CardMarque  col-lg-6  col-sm-6">
-                      {item.mark}
-                    </div>
-                    <div className="CardModel col-lg-6  col-sm-6">
-                      {item.model}
-                    </div>
+              <Link
+                to={{
+                  pathname: "FicheProduitPage",
+                  state: { FpDatatoRender: item },
+                }}
+              >
+                <div className=" row center">
+                  <div className="CardSliderImg col-lg-4  col-sm-12">
+                    <img className="imgCard" src={img}></img>
                   </div>
-                  <div className=" row center">
-                    <div className="CardDate col-lg-6  col-sm-6">
-                      {item.dateAnnance}
-                    </div>
-                    <div className="CardCity col-lg-6  col-sm-6">
-                      {item.city}
+
+                  <div className="CardSliderDesc col-lg-8  col-sm-12">
+                    <div className="CardPrice">{item.price} DH</div>
+                    <div className="CardDesc">{item.descriptionCar} </div>
+                    <div className="CartBotomDiv">
+                      <hr />
+                      <div className=" row center">
+                        <div className="CardMarque  col-lg-6  col-sm-6">
+                          {item.mark}
+                        </div>
+                        <div className="CardModel col-lg-6  col-sm-6">
+                          {item.model}
+                        </div>
+                      </div>
+                      <div className=" row center">
+                        <div className="CardDate col-lg-6  col-sm-6">
+                          {item.dateAnnance}
+                        </div>
+                        <div className="CardCity col-lg-6  col-sm-6">
+                          {item.city}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         ))}

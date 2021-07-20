@@ -20,6 +20,9 @@ const LoginService = {
           visitor.data = data.data;
           visitor.success = true;
           visitor.msg = "ok";
+          localStorage.setItem("connectedVisitor", JSON.stringify(data.data));
+
+          console.log("visitor", visitor.data);
         } else if (data.status == 204) {
           visitor.data = data.data;
           visitor.success = false;
@@ -35,7 +38,6 @@ const LoginService = {
         visitor.msg = err.stack;
         visitor.data = "";
       });
-    console.log("in service :", visitor);
     return visitor;
   },
   // for the User
@@ -54,9 +56,11 @@ const LoginService = {
       )
       .then((data) => {
         if (data.status == 200) {
+          console.log("data", User.data);
           User.data = data.data;
           User.success = true;
           User.msg = "ok";
+          localStorage.setItem("connectedUser", JSON.stringify(data.data));
         } else if (data.status == 204) {
           User.data = data.data;
           User.success = false;
@@ -73,7 +77,6 @@ const LoginService = {
         User.data = "";
       });
 
-    console.log("in service :", User);
     return User;
   },
 };

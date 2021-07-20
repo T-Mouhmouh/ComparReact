@@ -22,15 +22,25 @@ export class FicheProduitPage extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log("FicheProduitPag : ", this.props.location.state.FpDatatoRender);
+  }
   render() {
+    console.log("sdf");
     return (
       <>
         <div className="row center">
           <FpImgSlider />
-          <StoreComponent />
-          <FpDescriptionComponent />
+          <StoreComponent
+            idCompany={this.props.location.state.FpDatatoRender.id_company}
+          />
+          <FpDescriptionComponent
+            car={this.props.location.state.FpDatatoRender}
+          />
           <p class="ChoiseTitle">Résultats similaires :</p>
-          <CompanyProductComponent />
+          <CompanyProductComponent
+            idCompany={this.props.location.state.FpDatatoRender.id_company}
+          />
         </div>
       </>
     );

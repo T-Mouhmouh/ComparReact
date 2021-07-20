@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import "../Style/css/login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
+import WishListService from "../services/WishListService.js";
+
 import { HomePage } from "../Page/HomePage";
 import {
   BrowserRouter as Router,
@@ -20,6 +22,18 @@ export class LoginComponent extends Component {
       UserConected: { data: "", msg: "", success: false },
     };
   }
+  getWishListData = async () => {
+    var connected = localStorage.getItem("connectedVisitor");
+    var connectedJ = JSON.parse(connected);
+    var tt = await WishListService.GetWishList(connectedJ.id_visitor);
+    var carWishListIds = [];
+    tt.data.map((item) => {
+      carWishListIds.push(item.id_car);
+    });
+
+    // push carWishListIds to localStoreg
+    localStorage.setItem("WishListCar", carWishListIds);
+  };
 
   submitLogin = async (e) => {
     let { user_type } = this.state;
@@ -35,8 +49,7 @@ export class LoginComponent extends Component {
         this.state.login,
         this.state.password
       );
-
-      console.log(this.state.UserConected);
+      this.getWishListData();
     } else if (user_type == "company") {
       connectedUser = await LoginService.CheckLoginUser(
         this.state.login,
@@ -44,9 +57,7 @@ export class LoginComponent extends Component {
       );
     }
 
-    console.log("im in login Component :", connectedUser);
     this.setState({ UserConected: connectedUser });
-    console.log("im in login Component :", this.state.UserConected);
   };
 
   render() {
