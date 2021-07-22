@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import "../Style/css/CardComponent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
+
 import WishListService from "../services/WishListService.js";
 
 import { Link } from "react-router-dom";
@@ -58,36 +59,49 @@ export class CardComponent extends Component {
       selectedindex: "",
       FpDatatoRender: {},
       isfav: false,
+      WishListCarList: [],
     };
   }
 
   componentDidMount() {
     var WishListCar = localStorage.getItem("WishListCar");
-    var WishListCarJ = JSON.parse(WishListCar);
-    console.log("WishListCar", WishListCar);
+    const WishListCarList = WishListCar.split(",");
+    //  console.log("WishListCar : : : 0", WishListCarList);
+
     this.setState({
       data: DemoData,
+      WishListCarList: WishListCarList,
     });
   }
-  addFavorit = (id_car) => {};
+  addFavorit = async (event, id_car) => {
+    if (event.target.classList.contains("far")) {
+      event.target.classList.remove("far");
+      event.target.classList.add("fas");
+      var Add = await WishListService.AddToWishList(id_car);
+    } else {
+      event.target.classList.remove("fas");
+      event.target.classList.add("far");
+      var Delete = await WishListService.DeleteFromWishList(id_car);
+    }
+  };
   render() {
-    let { data, CardDataToRander } = this.state;
+    let { data, CardDataToRander, WishListCarList } = this.state;
     return (
       <>
         {this.props.CardDataToRander?.data?.map((item, index) => (
           <div>
             <div className="CardParent container">
-              <div onClick={this.addFavorit(item.id_car)}>
-                {!this.state.isfav && (
+              <div>
+                {!WishListCarList.some((val) => item.id_car == val) && (
                   <i
                     class="far fa-heart "
-                    onClick={() => this.setState({ isfav: !this.state.isfav })}
+                    onClick={(e) => this.addFavorit(e, item.id_car)}
                   ></i>
                 )}
-                {this.state.isfav && (
+                {WishListCarList.some((val) => item.id_car == val) && (
                   <i
                     class="fas fa-heart"
-                    onClick={() => this.setState({ isfav: !this.state.isfav })}
+                    onClick={(e) => this.addFavorit(e, item.id_car)}
                   ></i>
                 )}
               </div>
