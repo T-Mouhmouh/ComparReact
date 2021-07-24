@@ -18,6 +18,17 @@ var enregistrationObjet = {
   city: "",
   deleted: 1,
 };
+var connectedJ = {
+  id_visitor: 0,
+  login: "",
+  pass: "",
+  fullName: "",
+  phoneNumber: "",
+  city: "",
+  deleted: 1,
+};
+var connected = localStorage.getItem("connectedVisitor");
+connectedJ = JSON.parse(connected);
 export class RegistrationComponent extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +63,21 @@ export class RegistrationComponent extends Component {
     };
     let { user_type } = this.state;
     e.preventDefault();
-
+    if (enregistrationObjet.login == "") {
+      enregistrationObjet.login = connectedJ.login;
+    }
+    if (enregistrationObjet.pass == "") {
+      enregistrationObjet.pass = connectedJ.pass;
+    }
+    if (enregistrationObjet.phoneNumber == "") {
+      enregistrationObjet.phoneNumber = connectedJ.phoneNumber;
+    }
+    if (enregistrationObjet.fullName == "") {
+      enregistrationObjet.fullName = connectedJ.fullName;
+    }
+    if (enregistrationObjet.city == "") {
+      enregistrationObjet.city = connectedJ.city;
+    }
     RegistrationUser = await RegistrationService.Update(enregistrationObjet);
     this.setState({ UserConected: RegistrationUser });
   };
@@ -93,18 +118,7 @@ export class RegistrationComponent extends Component {
 
   // componentDidMount() {}
   render() {
-    var connectedJ = {
-      id_visitor: 0,
-      login: "",
-      pass: "",
-      fullName: "",
-      phoneNumber: "",
-      city: "",
-      deleted: 1,
-    };
     if (this.props.IsUpdatePage) {
-      var connected = localStorage.getItem("connectedVisitor");
-      connectedJ = JSON.parse(connected);
       enregistrationObjet.id_visitor = connectedJ.id_visitor;
     }
     let { UserConected } = this.state;
