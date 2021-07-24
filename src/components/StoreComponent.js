@@ -41,7 +41,7 @@ export class StoreComponent extends Component {
         </div>
         {this.props.IsCompanyPage != "yes" && (
           <div class=" StoreElement StoreLink">
-            <a href={store.Storelink}>Voir Plus</a>
+            <a href={"CompanyPage/" + store.id_company}>Voir Plus</a>
           </div>
         )}
       </div>

@@ -5,6 +5,7 @@ import CarService from "../services/CarService.js";
 import { Link } from "react-router-dom";
 
 import { LoginComponent } from "../components/LoginComponent";
+import { HeaderComponent } from "../components/HeaderComponent";
 
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 
@@ -22,6 +23,7 @@ export class LoginPage extends Component {
   render() {
     return (
       <>
+        <HeaderComponent />
         <LoginComponent />
       </>
     );

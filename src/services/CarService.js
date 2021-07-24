@@ -102,6 +102,37 @@ const CarService = {
       });
     return villes;
   },
+
+  //get Car By Id
+  async GetCarById(id_Car) {
+    var Car = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+    await axios
+      .get("https://localhost:44330/api/Car/GetCar?Id=" + id_Car + "")
+      .then((data) => {
+        if (data.status == 200) {
+          Car.data = data.data;
+          Car.success = true;
+          Car.msg = "ok";
+        } else if (data.status == 204) {
+          Car.data = data.data;
+          Car.success = false;
+          Car.msg = "ko";
+        } else {
+          Car.success = false;
+          Car.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        Car.success = false;
+        Car.msg = err.stack;
+        Car.data = "";
+      });
+    return Car;
+  },
 };
 
 export default CarService;

@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 
 import { SearchComponent } from "../components/SearchComponent";
 import { CardComponent } from "../components/CardComponent";
+import { HeaderComponent } from "../components/HeaderComponent";
 
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 
-export class ShearchResultPage extends Component {
+export class SearchResultPage extends Component {
   constructor(props) {
     super(props);
 
@@ -31,11 +32,11 @@ export class ShearchResultPage extends Component {
   render() {
     return (
       <>
-        {this.state.tt}
+        <HeaderComponent />
         <SearchComponent DataToRender={this.DataToRender} />
         <CardComponent CardDataToRander={this.state.DataToRanderInCard} />
       </>
     );
   }
 }
-export default ShearchResultPage;
+export default SearchResultPage;
