@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import StoreService from "../services/StoreService";
 import { StoreComponent } from "../components/StoreComponent";
+import { HeaderComponent } from "../components/HeaderComponent";
 import { CompanyAllListProductComponent } from "../components/CompanyAllListProductComponent";
 
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
@@ -32,6 +33,7 @@ export class CompanyPage extends Component {
 
     return (
       <>
+        <HeaderComponent />
         <div class="container">
           <div class="row">
             <div class="col-8">

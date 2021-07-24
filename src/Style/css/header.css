@@ -49,10 +49,11 @@
   font-size: larger;
   font-family: ui-rounded;
 }
-
+.usernamebtn {
+  width: 150px;
+  height: 40px;
+}
 .rightSide button {
-  height: 30px;
-  width: 70px;
   font-size: 16px;
 }
 
@@ -61,6 +62,25 @@
   padding-left: 9px;
 }
 
+.dropdown-item:hover {
+  font-weight: bold;
+}
+
+.TabHeart {
+  float: left !important;
+  margin-right: 5px !important;
+  font-size: 17px !important;
+  color: blueviolet !important;
+}
+.fa-user-cog {
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+  font-size: 17px !important;
+  color: blueviolet !important;
+}
+.dropdown-menu {
+  width: 225px !important;
+}
 @media only screen and (max-width: 850px) {
   .Navbar .leftSide .Links a {
     font-size: 15px;

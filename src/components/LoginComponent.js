@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
 import WishListService from "../services/WishListService.js";
 
-import { HomePage } from "../Page/HomePage";
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,7 +48,9 @@ export class LoginComponent extends Component {
         this.state.login,
         this.state.password
       );
-      this.getWishListData();
+      if (connectedUser.success) {
+        this.getWishListData();
+      }
     } else if (user_type == "company") {
       connectedUser = await LoginService.CheckLoginUser(
         this.state.login,
@@ -69,7 +70,7 @@ export class LoginComponent extends Component {
       this.state.user_type == "company" ? isselectedTypeClass : "";
     return (
       <div>
-        {UserConected.success ? <Redirect to="/Home" /> : ""}
+        {UserConected.success ? <Redirect to="/Search" /> : ""}
         <section className="container-fluid">
           <secion className="row justify-content-center">
             <section className="col-12 col-sm-6 col-md-3">
@@ -131,7 +132,6 @@ export class LoginComponent extends Component {
                   Se connecter
                 </button>
                 <div>{this.state.UserConected.msg}</div>
-
                 <div>
                   <div className="inline">Pas encore inscrit?</div>
                   <div className="inline">

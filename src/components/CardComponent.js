@@ -64,8 +64,11 @@ export class CardComponent extends Component {
   }
 
   componentDidMount() {
+    var WishListCarList;
     var WishListCar = localStorage.getItem("WishListCar");
-    const WishListCarList = WishListCar.split(",");
+    if (WishListCar != null) {
+      WishListCarList = WishListCar.split(",");
+    }
     //  console.log("WishListCar : : : 0", WishListCarList);
 
     this.setState({
@@ -109,7 +112,7 @@ export class CardComponent extends Component {
               <Link
                 to={{
                   pathname: "FicheProduitPage",
-                  state: { FpDatatoRender: item },
+                  state: { id_car: item.id_car },
                 }}
               >
                 <div className=" row center">

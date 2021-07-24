@@ -3,13 +3,12 @@ import "../Style/css/FpDescriptionComponent.css";
 import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
 import { Link } from "react-router-dom";
-
 import { FpImgSlider } from "../components/FpImgSlider";
 import { StoreComponent } from "../components/StoreComponent";
 import { FpDescriptionComponent } from "../components/FpDescriptionComponent";
 import { CompanyProductComponent } from "../components/CompanyProductComponent";
-
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
+import { HeaderComponent } from "../components/HeaderComponent";
 
 export class FicheProduitPage extends Component {
   constructor(props) {
@@ -19,28 +18,37 @@ export class FicheProduitPage extends Component {
       marque: "",
       model: "",
       city: "",
+      FpDatatoRender: "",
     };
   }
 
-  componentDidMount() {
-    console.log("FicheProduitPag : ", this.props.location.state.FpDatatoRender);
-  }
+  componentWillMount = async () => {
+    console.log("FicheProduitPag : ", this.props.location.state.id_car);
+    var FpDatatoRender = await CarService.GetCarById(
+      this.props.location.state.id_car
+    );
+    this.setState({ FpDatatoRender: FpDatatoRender });
+  };
+
   render() {
-    console.log("sdf");
+    let { FpDatatoRender } = this.state;
     return (
       <>
+        <HeaderComponent />
         <div className="row center">
-          <FpImgSlider />
-          <StoreComponent
-            idCompany={this.props.location.state.FpDatatoRender.id_company}
-          />
-          <FpDescriptionComponent
-            car={this.props.location.state.FpDatatoRender}
-          />
+          {FpDatatoRender != "" && <FpImgSlider />}
+          {FpDatatoRender != "" && (
+            <StoreComponent idCompany={FpDatatoRender?.data.id_company} />
+          )}
+          {FpDatatoRender != "" && (
+            <FpDescriptionComponent car={FpDatatoRender.data} />
+          )}
           <p class="ChoiseTitle">Résultats similaires :</p>
-          <CompanyProductComponent
-            idCompany={this.props.location.state.FpDatatoRender.id_company}
-          />
+          {FpDatatoRender != "" && (
+            <CompanyProductComponent
+              idCompany={FpDatatoRender?.data.id_company}
+            />
+          )}
         </div>
       </>
     );
