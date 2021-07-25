@@ -3,7 +3,11 @@ import "../Style/css/login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
 import WishListService from "../services/WishListService.js";
-
+import "react-notifications/lib/notifications.css";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 import {
   BrowserRouter as Router,
   Switch,
@@ -57,12 +61,22 @@ export class LoginComponent extends Component {
         this.state.password
       );
     }
+    if (connectedUser.success) {
+      NotificationManager.success(
+        "Hello " + connectedUser.data.fullName + " ;) ",
+        "Success !"
+      );
+    }
+    if (!connectedUser.success) {
+      NotificationManager.error("login ou mot de passe incorrect !", "Error !");
+    }
 
     this.setState({ UserConected: connectedUser });
   };
 
   render() {
     let { UserConected } = this.state;
+
     var isselectedTypeClass = "selectedType";
     var visitorclass =
       this.state.user_type == "visitor" ? isselectedTypeClass : "";
@@ -144,6 +158,7 @@ export class LoginComponent extends Component {
             </section>
           </secion>
         </section>
+        <NotificationContainer />
       </div>
     );
   }
