@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
 
 import WishListService from "../services/WishListService.js";
-
+import search_no_result from "../Style/img/search_no_result.png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { browserhistory } from "react-router";
@@ -64,7 +64,7 @@ export class CardComponent extends Component {
   }
 
   componentDidMount() {
-    var WishListCarList;
+    var WishListCarList = null;
     var WishListCar = localStorage.getItem("WishListCar");
     if (WishListCar != null) {
       WishListCarList = WishListCar.split(",");
@@ -88,6 +88,11 @@ export class CardComponent extends Component {
     }
   };
   render() {
+    var WishList = null;
+    var WishListCar = localStorage.getItem("WishListCar");
+    if (WishListCar != null) {
+      WishList = WishListCar.split(",");
+    }
     let { data, CardDataToRander, WishListCarList } = this.state;
     return (
       <>
@@ -95,18 +100,20 @@ export class CardComponent extends Component {
           <div>
             <div className="CardParent container">
               <div>
-                {!WishListCarList.some((val) => item.id_car == val) && (
-                  <i
-                    class="far fa-heart "
-                    onClick={(e) => this.addFavorit(e, item.id_car)}
-                  ></i>
-                )}
-                {WishListCarList.some((val) => item.id_car == val) && (
-                  <i
-                    class="fas fa-heart"
-                    onClick={(e) => this.addFavorit(e, item.id_car)}
-                  ></i>
-                )}
+                {WishList != null &&
+                  !WishListCarList.some((val) => item.id_car == val) && (
+                    <i
+                      class="far fa-heart "
+                      onClick={(e) => this.addFavorit(e, item.id_car)}
+                    ></i>
+                  )}
+                {WishList != null &&
+                  WishListCarList.some((val) => item.id_car == val) && (
+                    <i
+                      class="fas fa-heart"
+                      onClick={(e) => this.addFavorit(e, item.id_car)}
+                    ></i>
+                  )}
               </div>
 
               <Link
@@ -148,6 +155,12 @@ export class CardComponent extends Component {
             </div>
           </div>
         ))}
+
+        {this.props.CardDataToRander?.data.length == 0 && (
+          <center>
+            <img className="" src={search_no_result} />
+          </center>
+        )}
       </>
     );
   }

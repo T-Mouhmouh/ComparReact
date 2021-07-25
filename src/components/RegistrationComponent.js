@@ -3,6 +3,11 @@ import "../Style/css/login.css";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
 import RegistrationService from "../services/RegistrationService";
+import "react-notifications/lib/notifications.css";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 import {
   BrowserRouter as Router,
   Switch,
@@ -79,6 +84,12 @@ export class RegistrationComponent extends Component {
       enregistrationObjet.city = connectedJ.city;
     }
     RegistrationUser = await RegistrationService.Update(enregistrationObjet);
+    if (RegistrationUser.success) {
+      NotificationManager.success("Bien Modifié...", "Success !");
+    }
+    if (!RegistrationUser.success) {
+      NotificationManager.error("Pas Modifié !...", "Error !");
+    }
     this.setState({ UserConected: RegistrationUser });
   };
 
@@ -116,7 +127,6 @@ export class RegistrationComponent extends Component {
     }
   };
 
-  // componentDidMount() {}
   render() {
     if (this.props.IsUpdatePage) {
       enregistrationObjet.id_visitor = connectedJ.id_visitor;
@@ -254,6 +264,7 @@ export class RegistrationComponent extends Component {
             </form>
           </secion>
         </section>
+        <NotificationContainer />
       </div>
     );
   }
