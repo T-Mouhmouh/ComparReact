@@ -1,13 +1,13 @@
 .StoreComponentParent {
   background-color: white;
   border-radius: 5px;
-  padding: 10px;
-  margin-top: 60px;
+  padding: 10px !important;
+  margin-top: 60px !important;
   box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
-  width: 300px;
+  width: 300px !important;
   height: 300px;
   margin-right: 20px;
-  text-align: center;
+  text-align: center !important;
 }
 
 .StoreImg {

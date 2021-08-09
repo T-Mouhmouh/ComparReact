@@ -61,6 +61,7 @@ export class LoginComponent extends Component {
         this.state.password
       );
     }
+
     if (connectedUser.success) {
       NotificationManager.success(
         "Hello " + connectedUser.data.fullName + " ;) ",
@@ -84,7 +85,12 @@ export class LoginComponent extends Component {
       this.state.user_type == "company" ? isselectedTypeClass : "";
     return (
       <div>
-        {UserConected.success ? <Redirect to="/Search" /> : ""}
+        {UserConected.success && this.state.user_type == "visitor" && (
+          <Redirect to="/Search" />
+        )}
+        {UserConected.success && this.state.user_type == "company" && (
+          <Redirect to="/ProfileCompanyPage" />
+        )}
         <section className="container-fluid">
           <secion className="row justify-content-center">
             <section className="col-12 col-sm-6 col-md-3">
@@ -138,9 +144,6 @@ export class LoginComponent extends Component {
                       });
                     }}
                   />
-                  <a href="https://github.com/T-Mouhmouh/ComparReact">
-                    Mot de passe oublié?
-                  </a>
                 </div>
                 <button type="submit" className="btn btn-primary btn-lg">
                   Se connecter
@@ -149,9 +152,7 @@ export class LoginComponent extends Component {
                 <div>
                   <div className="inline">Pas encore inscrit?</div>
                   <div className="inline">
-                    <a href="https://github.com/T-Mouhmouh/ComparReact">
-                      S'inscrire gratuitement.
-                    </a>
+                    <a href="/Registration">S'inscrire gratuitement.</a>
                   </div>
                 </div>
               </form>

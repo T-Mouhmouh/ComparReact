@@ -19,9 +19,11 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RegistrationPage } from "./Page/RegistrationPage";
 import { ProfilePage } from "./Page/ProfilePage";
+import { ProfileCompanyPage } from "./Page/ProfileCompanyPage";
 import { SearchResultPage } from "./Page/SearchResultPage";
 import { FicheProduitPage } from "./Page/FicheProduitPage";
 import { CompanyPage } from "./Page/CompanyPage";
+import { TabComponentCompany } from "./components/TabComponentCompany";
 
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -59,12 +61,12 @@ export class App extends Component {
           <Switch>
             <Route exact path="/Login" component={LoginPage} />
             <Route exact path="/" component={LoginPage} />
-
             <Route exact path="/Search" component={SearchResultPage} />
             <Route exact path="/FicheProduit" component={FicheProduitPage} />
             <Route exact path="/Registration" component={RegistrationPage} />
             <Route exact path="/CompanyPage/:id" component={CompanyPage} />
             <Route path="/ProfilePage" component={ProfilePage} />
+            <Route path="/ProfileCompanyPage" component={ProfileCompanyPage} />
 
             <Route
               exact

@@ -1,55 +1,17 @@
 import axios from "axios";
 const RegistrationService = {
-  // for the Visitor
-
-  // async Registration(data) {
-  //   var visitor = {
-  //     data: "",
-  //     success: false,
-  //     msg: "",
-  //   };
-  //   await axios({
-  //     method: "post",
-  //     url: "https://localhost:44330/api/Visitor/AddVisitor",
-  //     data: JSON.stringify(data),
-  //     headers: {
-  //       "Content-Type": "application/json;charset=UTF-8",
-  //       "Access-Control-Allow-Origin": "*",
-  //       "Access-Control-Allow-Credentials": true,
-  //     },
-  //   })
-  //     .then((data) => {
-  //       if (data.status == 200) {
-  //         visitor.data = data.data;
-  //         visitor.success = true;
-  //         visitor.msg = "ok";
-  //       } else if (data.status == 204) {
-  //         visitor.data = data.data;
-  //         visitor.success = false;
-  //         visitor.msg = "ko";
-  //       } else {
-  //         visitor.success = false;
-  //         visitor.msg = "try later !";
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       visitor.success = false;
-  //       visitor.msg = err.stack;
-  //       visitor.data = "";
-  //     });
-  //   console.log("in service :", visitor);
-  //   return visitor;
-  // },
-
-  async Registration(data) {
+  async Registration(data, type) {
     var RegisterUser = {
       data: "",
       success: false,
       msg: "",
     };
+    var cc =
+      type == "visitor"
+        ? "https://localhost:44330/api/Visitor/AddVisitor"
+        : "https://localhost:44330/api/Users/AddUsers";
     await axios
-      .post("https://localhost:44330/api/Visitor/AddVisitor", data)
+      .post(cc, data)
       .then((data) => {
         if (data.status == 201) {
           RegisterUser.data = data.data;

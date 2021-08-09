@@ -1,0 +1,20 @@
+.fa-edit {
+  margin-right: 15px;
+}
+
+.fa-tools {
+  margin-left: 50px;
+}
+
+.fa-trash-alt:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+.fa-edit:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+.addbtn {
+  width: 169px;
+  margin: 15px;
+}

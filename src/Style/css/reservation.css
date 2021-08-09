@@ -1,0 +1,29 @@
+#collapseExample {
+  width: 300px;
+}
+.fa-handshake {
+  margin-right: 5px;
+}
+.card-body {
+  height: 175px;
+  height: 220px;
+}
+.reservationFather {
+  text-align: -webkit-center;
+}
+.info {
+  margin-bottom: 15px;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.infoFathr {
+  font-size: smaller;
+}
+.datereservation {
+  font-weight: bold;
+}
+.btn-warning {
+  margin: 19px;
+  font-weight: bold;
+}

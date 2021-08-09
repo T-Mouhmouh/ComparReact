@@ -95,7 +95,7 @@ export class SearchComponent extends Component {
                 onChange={(e) => {
                   this.filtermodel(e);
                 }}
-                placeholder="   Choose your Marque..."
+                placeholder="Choose your Marque..."
               />
             </div>
             <div class="ModelSection col-lg-4 col-sm-12">

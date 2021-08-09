@@ -4,12 +4,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
 
 import WishListService from "../services/WishListService.js";
-import search_no_result from "../Style/img/search_no_result.png";
+
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { browserhistory } from "react-router";
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 import { FicheProduitPage } from "../Page/FicheProduitPage";
+import NoResultImg from "../Style/img/search_no_result.png";
 import {
   BrowserRouter as Router,
   Switch,
@@ -93,6 +94,8 @@ export class CardComponent extends Component {
     if (WishListCar != null) {
       WishList = WishListCar.split(",");
     }
+    console.log(" WishList", WishList);
+
     let { data, CardDataToRander, WishListCarList } = this.state;
     return (
       <>
@@ -101,14 +104,14 @@ export class CardComponent extends Component {
             <div className="CardParent container">
               <div>
                 {WishList != null &&
-                  !WishListCarList.some((val) => item.id_car == val) && (
+                  !WishList.some((val) => item.id_car == val) && (
                     <i
                       class="far fa-heart "
                       onClick={(e) => this.addFavorit(e, item.id_car)}
                     ></i>
                   )}
                 {WishList != null &&
-                  WishListCarList.some((val) => item.id_car == val) && (
+                  WishList.some((val) => item.id_car == val) && (
                     <i
                       class="fas fa-heart"
                       onClick={(e) => this.addFavorit(e, item.id_car)}
@@ -157,9 +160,9 @@ export class CardComponent extends Component {
         ))}
 
         {this.props.CardDataToRander?.data.length == 0 && (
-          <center>
-            <img className="" src={search_no_result} />
-          </center>
+          <div className="NoResultDiv">
+            <img src={NoResultImg} />
+          </div>
         )}
       </>
     );

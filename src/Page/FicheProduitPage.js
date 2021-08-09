@@ -7,6 +7,7 @@ import { FpImgSlider } from "../components/FpImgSlider";
 import { StoreComponent } from "../components/StoreComponent";
 import { FpDescriptionComponent } from "../components/FpDescriptionComponent";
 import { CompanyProductComponent } from "../components/CompanyProductComponent";
+import { ResirvationComponent } from "../components/ResirvationComponent";
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 import { HeaderComponent } from "../components/HeaderComponent";
 
@@ -40,9 +41,20 @@ export class FicheProduitPage extends Component {
           {FpDatatoRender != "" && (
             <StoreComponent idCompany={FpDatatoRender?.data.id_company} />
           )}
-          {FpDatatoRender != "" && (
-            <FpDescriptionComponent car={FpDatatoRender.data} />
-          )}
+          <div className="col-6">
+            {FpDatatoRender != "" && (
+              <FpDescriptionComponent car={FpDatatoRender.data} />
+            )}
+          </div>
+          <div className="col ResirvationComponent">
+            {FpDatatoRender != "" && (
+              <ResirvationComponent
+                idcompany={FpDatatoRender?.data.id_company}
+                idcar={FpDatatoRender?.data.id_car}
+              />
+            )}
+          </div>
+
           <p class="ChoiseTitle">Résultats similaires :</p>
           {FpDatatoRender != "" && (
             <CompanyProductComponent
