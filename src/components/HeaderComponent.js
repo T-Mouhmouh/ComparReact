@@ -3,16 +3,37 @@ import "../Style/css/header.css";
 import "bootstrap/dist/css/bootstrap.css";
 import logo from "../Style/img/car.jpg";
 import { Link } from "react-router-dom";
+var PATHVisitor = "https://localhost:44330/PhotosVisitor/";
+var PATHUser = "https://localhost:44330/PhotosUsers/";
 export class HeaderComponent extends Component {
   render() {
     var connected = localStorage.getItem("connectedVisitor");
     var connectedJ = JSON.parse(connected);
+
+    var connectedUser = localStorage.getItem("connectedUser");
+    var connectedUserJ = JSON.parse(connectedUser);
+    var btnclass;
+    var loginEtat = false;
+    var loginbtn = false;
+    if (connectedUserJ === null || connectedJ === null) {
+      loginEtat = true;
+    }
+    if (connectedJ != null) {
+      btnclass = "btn-warning";
+      loginbtn = true;
+    }
+    if (connectedUserJ != null) {
+      btnclass = "btn-primary";
+      loginbtn = true;
+    }
     /*  var WishListCar = localStorage.getItem("WishListCar");
     var WishListCarJ = JSON.parse(WishListCar); */
     return (
       <div class="Navbar  sticky-top">
         <div className="leftSide">
-          <img className="menuimg" src={logo} />
+          <a href="/Search">
+            <img className="menuimg" src={logo} />
+          </a>
           <div className="Links">
             <a>Home</a>
             <a>Client</a>
@@ -21,31 +42,41 @@ export class HeaderComponent extends Component {
           <button>open</button>
         </div>
         <div className="rightSide">
-          {connectedJ == null && (
+          {!loginEtat && (
             <button type="button" class="loginbtn btn btn-success">
               Login
             </button>
           )}
-          {connectedJ != null && (
+          {loginbtn && (
             <div className="dropdown">
               <button
-                className="btn btn-warning dropdown-toggle usernamebtn"
+                className={`btn dropdown-toggle usernamebtn ${btnclass}`}
                 type="button"
                 id="dropdownMenuButton2"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {connectedJ?.login}
+                {connectedJ != null && connectedJ?.login}
+                {connectedUserJ != null && connectedUserJ?.fullName}
               </button>
+
               <ul
                 className="dropdown-menu "
                 aria-labelledby="dropdownMenuButton2"
               >
                 <li>
-                  <a className="dropdown-item " href="ProfilePage">
-                    <i class="fas fa-heart TabHeart"></i>
-                    Mes favoris /<i class="fas fa-user-cog"></i>Profile
-                  </a>
+                  {connectedJ != null && (
+                    <a className="dropdown-item " href="ProfilePage">
+                      <i class="fas fa-heart TabHeart"></i>
+                      Mes favoris /<i class="fas fa-user-cog"></i>Profile
+                    </a>
+                  )}
+                  {connectedUserJ != null && (
+                    <a className="dropdown-item " href="ProfileCompanyPage">
+                      <i class="fas fa-list-ol TabHeart "></i>
+                      Voitures /<i class="fas fa-user-cog"></i>Profile
+                    </a>
+                  )}
                 </li>
 
                 <li>
@@ -63,6 +94,18 @@ export class HeaderComponent extends Component {
                   </a>
                 </li>
               </ul>
+              {connectedJ != null && (
+                <img
+                  src={PATHVisitor + connectedJ.imgName}
+                  className="profileImage"
+                />
+              )}
+              {connectedUserJ != null && (
+                <img
+                  src={PATHUser + connectedUserJ.imgName}
+                  className="profileImage"
+                />
+              )}
             </div>
           )}
         </div>

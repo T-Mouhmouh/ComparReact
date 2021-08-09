@@ -1,19 +1,16 @@
 import React, { Component, useState } from "react";
 import "../Style/css/header.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { RegistrationComponent } from "../components/RegistrationComponent";
-import { WishListComponent } from "../components/WishListComponent";
+import CarCompanyListComponent from "./CarCompanyListComponent";
 import { ReservationListComponent } from "../components/ReservationListComponent";
-import logo from "../Style/img/car.jpg";
-
-export class TabComponent extends Component {
+export class TabComponentCompany extends Component {
   render() {
     return (
       <>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
-              className="nav-link "
+              className="nav-link active "
               id="home-tab"
               data-bs-toggle="tab"
               data-bs-target="#home"
@@ -22,13 +19,13 @@ export class TabComponent extends Component {
               aria-controls="home"
               aria-selected="true"
             >
-              <i class="fas fa-user-cog TabHeart"></i>
-              Profile
+              <i class="fas fa-folder-plus TabHeart"></i>
+              Ajouter /<i class="fas fa-list-ol "></i>List
             </button>
           </li>
           <li class="nav-item" role="presentation">
             <button
-              className="nav-link active"
+              className="nav-link "
               id="contact-tab"
               data-bs-toggle="tab"
               data-bs-target="#WishList"
@@ -38,7 +35,7 @@ export class TabComponent extends Component {
               aria-selected="false"
             >
               <i class="fas fa-heart TabHeart"></i>
-              WishList
+              KPI
             </button>
           </li>
           <li class="nav-item" role="presentation">
@@ -59,20 +56,20 @@ export class TabComponent extends Component {
         </ul>
         <div class="tab-content" id="myTabContent">
           <div
-            className="tab-pane fade "
+            className="tab-pane fade show active"
             id="home"
             role="tabpanel"
             aria-labelledby="home-tab"
           >
-            <RegistrationComponent IsUpdatePage={true} />
+            <CarCompanyListComponent />
           </div>
           <div
-            className="tab-pane fade  show active"
+            className="tab-pane fade  "
             id="WishList"
             role="tabpanel"
             aria-labelledby="contact-tab"
           >
-            <WishListComponent />
+            kpi
           </div>
           <div
             className="tab-pane fade "
@@ -80,11 +77,11 @@ export class TabComponent extends Component {
             role="tabpanel"
             aria-labelledby="reservation-tab"
           >
-            <ReservationListComponent isCompany={false} />
+            <ReservationListComponent isCompany={true} />
           </div>
         </div>
       </>
     );
   }
 }
-export default TabComponent;
+export default TabComponentCompany;

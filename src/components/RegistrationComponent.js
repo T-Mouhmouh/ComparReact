@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import LoginService from "../services/LoginService.js";
 import RegistrationService from "../services/RegistrationService";
 import "react-notifications/lib/notifications.css";
+import avatar from "../Style/img/avatar.jpg";
 import {
   NotificationContainer,
   NotificationManager,
@@ -22,6 +23,8 @@ var enregistrationObjet = {
   phoneNumber: "",
   city: "",
   deleted: 1,
+  imgName: "",
+  imgFile: null,
 };
 var connectedJ = {
   id_visitor: 0,
@@ -30,10 +33,15 @@ var connectedJ = {
   fullName: "",
   phoneNumber: "",
   city: "",
+  imgName: "",
   deleted: 1,
 };
 var connected = localStorage.getItem("connectedVisitor");
 connectedJ = JSON.parse(connected);
+var connectedUser = localStorage.getItem("connectedUser");
+var connectedUserJ = JSON.parse(connectedUser);
+var PATHVisitor = "https://localhost:44330/PhotosVisitor/";
+var PATHUser = "https://localhost:44330/PhotosUsers/";
 export class RegistrationComponent extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +51,7 @@ export class RegistrationComponent extends Component {
       userType: "Particulier", //visitor or user
       UserConected: { data: "", msg: "", success: false },
       IsUpdatePage: false,
+      avatar: avatar,
     };
   }
 
@@ -54,13 +63,36 @@ export class RegistrationComponent extends Component {
     };
     let { user_type } = this.state;
     e.preventDefault();
-    RegistrationUser = await RegistrationService.Registration(
-      enregistrationObjet
-    );
+    if (this.state.userType == "Particulier") {
+      RegistrationUser = await RegistrationService.Registration(
+        enregistrationObjet,
+        "visitor"
+      );
+    }
+    if (this.state.userType == "Professionnel") {
+      RegistrationUser = await RegistrationService.Registration(
+        enregistrationObjet,
+        "user"
+      );
+    }
+    this.handleFileSelected();
+    if (RegistrationUser.success && this.state.userType == "Particulier") {
+      await LoginService.CheckLoginVisitor(
+        enregistrationObjet.login,
+        enregistrationObjet.pass
+      );
+    }
+    if (RegistrationUser.success && this.state.userType == "Professionnel") {
+      await LoginService.CheckLoginUser(
+        enregistrationObjet.login,
+        enregistrationObjet.pass
+      );
+    }
     this.setState({ UserConected: RegistrationUser });
   };
 
   submitUpdate = async (e) => {
+    const data = new FormData();
     var RegistrationUser = {
       data: "",
       msg: "",
@@ -83,6 +115,7 @@ export class RegistrationComponent extends Component {
     if (enregistrationObjet.city == "") {
       enregistrationObjet.city = connectedJ.city;
     }
+
     RegistrationUser = await RegistrationService.Update(enregistrationObjet);
     if (RegistrationUser.success) {
       NotificationManager.success("Bien Modifié...", "Success !");
@@ -108,6 +141,7 @@ export class RegistrationComponent extends Component {
   };
   enChangeelement = (e) => {
     // this.setState({ [e.target.name]: e.target.value }); gooodd
+
     switch (e.target.id) {
       case "email":
         enregistrationObjet.login = e.target.value;
@@ -124,19 +158,73 @@ export class RegistrationComponent extends Component {
       case "ville":
         enregistrationObjet.city = e.target.value;
         break;
+      case "avatar":
+        enregistrationObjet.imgFile = e.target.files[0];
+        enregistrationObjet.imgName = e.target.files[0].name;
+
+        console.log("img", e.target.files[0]);
+        this.imageHandler(e);
+        break;
     }
+
+    console.log("enregistrationObjet : ", enregistrationObjet);
+  };
+  imageHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        this.setState({ avatar: reader.result });
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
+  handleFileSelected = () => {
+    const formData = new FormData();
+    formData.append(
+      "myFile",
+      enregistrationObjet.imgFile,
+      enregistrationObjet.imgName
+    );
+
+    var Path =
+      this.state.userType == "Particulier"
+        ? "https://localhost:44330/api/Visitor/SaveFile"
+        : "https://localhost:44330/api/Users/SaveFile";
+
+    fetch(Path, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log("resuult", result);
+        },
+        (error) => {
+          alert("Failed");
+        }
+      );
+  };
   render() {
     if (this.props.IsUpdatePage) {
       enregistrationObjet.id_visitor = connectedJ.id_visitor;
     }
-    let { UserConected } = this.state;
+    let { UserConected, avatar } = this.state;
+
     var isselectedTypeClass = "selectedType";
     var visitorclass =
       this.state.user_type == "visitor" ? isselectedTypeClass : "";
     var companyclass =
       this.state.user_type == "company" ? isselectedTypeClass : "";
+
+    if (connectedJ != null) {
+      avatar = PATHVisitor + connectedJ.imgName;
+    }
+    if (connectedUserJ != null) {
+      avatar = PATHVisitor + connectedUserJ.imgName;
+    }
+
     return (
       <div>
         {UserConected.success && !this.props.IsUpdatePage ? (
@@ -154,48 +242,62 @@ export class RegistrationComponent extends Component {
               }
             >
               <div className="row ">
-                {!this.props.IsUpdatePage && (
-                  <div className="col-6">
-                    <label className="form-label fw-bold">Vous êtes un </label>
-
-                    <div className="mb-3 col-6">
-                      <div class="form-check col">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="ParticulierInput"
-                          id="Particulier"
-                          value="Particulier"
-                          checked={this.state.userType === "Particulier"}
-                          onChange={this.setUserType}
-                        />
-                        <label class="form-check-label" for="exampleRadios1">
-                          Particulier
-                        </label>
-                      </div>
-                    </div>
-                    <div className="mb-3 col-6">
-                      <div class="form-check col">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="ProfessionnelInput"
-                          id="Professionnel"
-                          value="Professionnel"
-                          checked={this.state.userType === "Professionnel"}
-                          onChange={this.setUserType}
-                        />
-                        <label class="form-check-label" for="exampleRadios2">
-                          Professionnel
-                        </label>
-                      </div>
-                    </div>
+                <div className="col-6 row me-2">
+                  <div className="col">
+                    <img src={avatar} className="avatar" />
+                    <input
+                      className="form-control form-control-sm"
+                      id="avatar"
+                      type="file"
+                      accept="image/*"
+                      onChange={this.enChangeelement}
+                    />
                   </div>
-                )}
+                  {!this.props.IsUpdatePage && (
+                    <div className="col-6">
+                      <label className="form-label fw-bold">Vous êtes un</label>
+                      <div className="mb-3 col-6">
+                        <div class="form-check col">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="ParticulierInput"
+                            id="Particulier"
+                            value="Particulier"
+                            checked={this.state.userType === "Particulier"}
+                            onChange={this.setUserType}
+                          />
+                          <label class="form-check-label" for="Particulier">
+                            Particulier
+                          </label>
+                        </div>
+                      </div>
+                      <div className="mb-3 col-6">
+                        <div class="form-check col">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="ProfessionnelInput"
+                            id="Professionnel"
+                            value="Professionnel"
+                            checked={this.state.userType === "Professionnel"}
+                            onChange={this.setUserType}
+                          />
+                          <label class="form-check-label" for="Professionnel">
+                            Professionnel
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 <div className="mb-3 col-6">
                   <label className="form-label fw-bold">Email</label>
                   <input
-                    defaultValue={connectedJ.login}
+                    defaultValue={
+                      this.props.IsUpdatePage ? connectedJ.login : ""
+                    }
                     type="text"
                     className="form-control"
                     id="email"
@@ -209,7 +311,9 @@ export class RegistrationComponent extends Component {
                   <label className="form-label fw-bold">Mot de passe</label>
                   <input
                     type="password"
-                    defaultValue={connectedJ.pass}
+                    defaultValue={
+                      this.props.IsUpdatePage ? connectedJ.pass : ""
+                    }
                     className="form-control"
                     id="passwd"
                     placeholder="Mot de passe"
@@ -220,7 +324,9 @@ export class RegistrationComponent extends Component {
                   <label className="form-label fw-bold">Nom et Prénom </label>
                   <input
                     type="text"
-                    defaultValue={connectedJ.fullName}
+                    defaultValue={
+                      this.props.IsUpdatePage ? connectedJ.fullName : ""
+                    }
                     className="form-control"
                     id="fullName"
                     placeholder="Nom et Prénom"
@@ -231,7 +337,9 @@ export class RegistrationComponent extends Component {
                   <label className="form-label fw-bold">Télephone</label>
                   <input
                     type="text"
-                    defaultValue={connectedJ.phoneNumber}
+                    defaultValue={
+                      this.props.IsUpdatePage ? connectedJ.phoneNumber : ""
+                    }
                     className="form-control"
                     id="tel"
                     placeholder="Télephone"
@@ -242,10 +350,11 @@ export class RegistrationComponent extends Component {
                   <label className="form-label fw-bold">Ville</label>
                   <input
                     type="text"
-                    defaultValue=""
                     className="form-control"
                     id="ville"
-                    defaultValue={connectedJ.city}
+                    defaultValue={
+                      this.props.IsUpdatePage ? connectedJ.city : ""
+                    }
                     placeholder="Ville"
                     onChange={this.enChangeelement}
                   />

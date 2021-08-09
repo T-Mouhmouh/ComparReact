@@ -29,6 +29,7 @@ export class SearchResultPage extends Component {
     });
     this.forceUpdate();
   };
+
   render() {
     return (
       <>

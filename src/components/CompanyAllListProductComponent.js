@@ -49,6 +49,7 @@ export class CompanyAllListProductComponent extends Component {
 
   render() {
     let { CardDataToRander } = this.state;
+    console.log("CardDataToRanderCardDataToRander : ", CardDataToRander);
     return (
       <div className="father">
         {CardDataToRander.map((item, index) => (

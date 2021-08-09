@@ -8,6 +8,11 @@
   cursor: pointer;
 }
 
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 5px;
+}
 .selectedType {
   border-bottom: 2px solid blue;
 }

@@ -21,8 +21,6 @@ const LoginService = {
           visitor.success = true;
           visitor.msg = "ok";
           localStorage.setItem("connectedVisitor", JSON.stringify(data.data));
-
-          console.log("visitor", visitor.data);
         } else if (data.status == 204) {
           visitor.data = data.data;
           visitor.success = false;
@@ -76,7 +74,7 @@ const LoginService = {
         User.msg = err.stack;
         User.data = "";
       });
-
+    console.log("UserUserUserUser", User);
     return User;
   },
 };

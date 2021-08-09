@@ -20,7 +20,11 @@ export class WishListComponent extends Component {
 
   componentDidMount = async () => {
     var WishListCar = localStorage.getItem("WishListCar");
-    const WishListCarList = WishListCar.split(",");
+    var WishListCarList = "";
+    if (WishListCar != null) {
+      WishListCarList = WishListCar != "" ? WishListCar.split(",") : "";
+    }
+
     var cars = [];
     var tt;
 
