@@ -1,0 +1,36 @@
+.kpiCard {
+  -webkit-box-shadow: 4px 4px 11px 1px #474144;
+  box-shadow: 4px 4px 11px 1px #474144;
+  width: 250px;
+  height: 130px;
+  background-color: dodgerblue;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 19px;
+  font-weight: bold;
+  color: white;
+  margin-top: 15px;
+}
+
+.kpiCard:hover {
+  background-color: cornflowerblue;
+  box-shadow: 6px 6px 14px 2px #474144;
+  cursor: pointer;
+}
+
+.kpiicons {
+  float: right;
+  margin: 10px;
+  color: black;
+}
+
+.kpip {
+  text-align: center;
+  margin-top: 20px;
+  color: gold;
+  font-size: 30px;
+}
+
+.kpiCard span {
+  margin-left: 10px;
+}

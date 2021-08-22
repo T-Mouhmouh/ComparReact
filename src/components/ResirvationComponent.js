@@ -33,6 +33,7 @@ var ReservationData = {
   visitorPhoneNumber: "",
   visitorImgName: "",
   visitorName: "",
+  review: "nothing",
   nbrjrs: 0,
 };
 
@@ -80,54 +81,62 @@ export class ResirvationComponent extends Component {
   render() {
     return (
       <div className="reservationFather">
-        <p>
-          <button
-            class="btn btn-primary"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            id="btnreserver"
-          >
-            <i class="fas fa-handshake"></i>
-            Reserver
-          </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body">
-            <div className="row infoFathr">
-              <div class="col info">
-                {connectedJ != null && connectedJ.fullName}
-              </div>
-              <div class="col info">
-                {connectedJ != null && connectedJ.city}
+        {connectedJ != null && (
+          <>
+            <p>
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+                id="btnreserver"
+              >
+                <i class="fas fa-handshake"></i>
+                Reserver
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <div className="row infoFathr">
+                  <div class="col info">
+                    {connectedJ != null && connectedJ.fullName}
+                  </div>
+                  <div class="col info">
+                    {connectedJ != null && connectedJ.city}
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="col datereservation">
+                    date reservation :
+                    <input
+                      type="date"
+                      id="datereservasion"
+                      onChange={this.dateChange}
+                    />
+                  </div>
+                  <div class="col datereservation">
+                    Nombre des Jours :
+                    <input
+                      type="number"
+                      id="nbrjrs"
+                      onChange={this.dateChange}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  onClick={this.reservation}
+                >
+                  Reserver <i class="fas fa-thumbtack"></i>
+                </button>
               </div>
             </div>
-            <div className="row">
-              <div class="col datereservation">
-                date reservation :
-                <input
-                  type="date"
-                  id="datereservasion"
-                  onChange={this.dateChange}
-                />
-              </div>
-              <div class="col datereservation">
-                Nombre des Jours :
-                <input type="number" id="nbrjrs" onChange={this.dateChange} />
-              </div>
-            </div>
-            <button
-              type="button"
-              class="btn btn-warning"
-              onClick={this.reservation}
-            >
-              Reserver <i class="fas fa-thumbtack"></i>
-            </button>
-          </div>
-        </div>
-        <NotificationContainer />
+            <NotificationContainer />
+          </>
+        )}
       </div>
     );
   }

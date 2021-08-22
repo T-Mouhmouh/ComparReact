@@ -133,6 +133,37 @@ const CarService = {
       });
     return Car;
   },
+  async GetKpi(Company_Id) {
+    var Car = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+    await axios
+      .get(
+        "https://localhost:44330/api/Car/GetKpi?Company_Id=" + Company_Id + ""
+      )
+      .then((data) => {
+        if (data.status == 200) {
+          Car.data = data.data;
+          Car.success = true;
+          Car.msg = "ok";
+        } else if (data.status == 204) {
+          Car.data = data.data;
+          Car.success = false;
+          Car.msg = "ko";
+        } else {
+          Car.success = false;
+          Car.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        Car.success = false;
+        Car.msg = err.stack;
+        Car.data = "";
+      });
+    return Car;
+  },
 
   async DeleteCar(id_Car) {
     var Car = {
@@ -162,6 +193,76 @@ const CarService = {
         Car.data = "";
       });
     return Car;
+  },
+
+  async UpdateActiveCar(id_Car, active) {
+    var Result = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+    await axios
+      .put(
+        "https://localhost:44330/api/Car/UpdateActiveCar?id_car=" +
+          id_Car +
+          "&active=" +
+          active +
+          ""
+      )
+      .then((data) => {
+        if (data.status == 200) {
+          Result.data = data.data;
+          Result.success = true;
+          Result.msg = "ok";
+        } else if (data.status == 204) {
+          Result.data = data.data;
+          Result.success = false;
+          Result.msg = "ko";
+        } else {
+          Result.success = false;
+          Result.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        Result.success = false;
+        Result.msg = err.stack;
+        Result.data = "";
+      });
+    return Result;
+  },
+
+  async boostIt(id_company) {
+    var Result = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+    await axios
+      .put(
+        "https://localhost:44330/api/Users/UpdateSponsor?User_Id=" +
+          id_company +
+          ""
+      )
+      .then((data) => {
+        if (data.status == 200) {
+          Result.data = data.data;
+          Result.success = true;
+          Result.msg = "ok";
+        } else if (data.status == 204) {
+          Result.data = data.data;
+          Result.success = false;
+          Result.msg = "ko";
+        } else {
+          Result.success = false;
+          Result.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        Result.success = false;
+        Result.msg = err.stack;
+        Result.data = "";
+      });
+    return Result;
   },
 };
 

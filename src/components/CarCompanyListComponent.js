@@ -65,6 +65,12 @@ export class CarCompanyListComponent extends Component {
     }
   };
 
+  UpdateActive = async (e, id_car) => {
+    console.log("reterrd fedrfffsdddgf ", e.target.checked);
+    var active = e.target.checked ? "active" : "inactive";
+    var ff = await CarService.UpdateActiveCar(id_car, active);
+  };
+
   render() {
     let { CardDataToRander } = this.state;
     //window.history.pushState("", "", "http://localhost:3000/ProfilePage");
@@ -75,7 +81,7 @@ export class CarCompanyListComponent extends Component {
           onClick={() => this.handleClickOpen()}
           class="btn btn-primary addbtn"
         >
-          <i class="far fa-plus-square"></i> cc
+          <i class="far fa-plus-square"></i> Ajouter
         </button>
         <table className="table table-hover">
           <thead>
@@ -116,6 +122,8 @@ export class CarCompanyListComponent extends Component {
                       <input
                         className="form-check-input"
                         type="checkbox"
+                        onChange={(e) => this.UpdateActive(e, item.id_car)}
+                        defaultChecked={item.active == "active"}
                         id={"flexSwitchCheckDefault" + index}
                       />
                       <label
@@ -147,10 +155,7 @@ export class CarCompanyListComponent extends Component {
         >
           <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
+            <DialogContentText>Voiture</DialogContentText>
           </DialogContent>
           <DialogActions>
             <input

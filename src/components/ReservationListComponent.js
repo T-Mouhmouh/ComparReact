@@ -10,6 +10,7 @@ export class ReservationListComponent extends Component {
     super(props);
     this.state = {
       reservationList: [{}],
+      review: "",
     };
   }
 
@@ -45,8 +46,29 @@ export class ReservationListComponent extends Component {
       return datetoconvert;
     }
   };
+
+  review = async (id_reservation, reviewWord) => {
+    var Add = await ReservationService.review(id_reservation, reviewWord);
+
+    if (Add.success) {
+      if (reviewWord == "like") {
+        document.getElementById("dislikebtn" + id_reservation).style.display =
+          "none";
+        document.getElementById("dislikebtn" + id_reservation).disabled = true;
+      } else if (reviewWord == "dislike") {
+        document.getElementById("likebtn" + id_reservation).disabled = true;
+        document.getElementById("likebtn" + id_reservation).style.display =
+          "none";
+      }
+    }
+  };
   render() {
     let { reservationList } = this.state;
+    console.log(
+      "reservationListreservationListreservationList : ",
+      reservationList
+    );
+
     {
       !this.props.isCompany &&
         window.history.pushState("", "", "http://localhost:3000/ProfilePage");
@@ -104,12 +126,48 @@ export class ReservationListComponent extends Component {
                 <td>{item.nbrjrs}</td>
                 {this.props.isCompany && (
                   <td>
-                    <button type="button" class=" btn-success  likelikeBtn ">
-                      <i class="far fa-thumbs-up"></i>
-                    </button>
-                    <button type="button" class=" btn-success">
-                      <i class="far fa-thumbs-down"></i>
-                    </button>
+                    {item.review == "nothing" && (
+                      <>
+                        <button
+                          id={"likebtn" + item.id_reservation}
+                          type="button"
+                          class=" btn-success  likelikeBtn "
+                          onClick={() =>
+                            this.review(item.id_reservation, "like")
+                          }
+                        >
+                          <i class="far fa-thumbs-up"></i>
+                        </button>
+                        <button
+                          id={"dislikebtn" + item.id_reservation}
+                          type="button"
+                          class=" btn-danger"
+                          onClick={() =>
+                            this.review(item.id_reservation, "dislike")
+                          }
+                        >
+                          <i class="far fa-thumbs-down"></i>
+                        </button>
+                      </>
+                    )}
+                    {item.review == "like" && (
+                      <>
+                        <button
+                          disabled
+                          type="button"
+                          class=" btn-success  likelikeBtn "
+                        >
+                          <i class="far fa-thumbs-up"></i>
+                        </button>
+                      </>
+                    )}
+                    {item.review == "dislike" && (
+                      <>
+                        <button disabled type="button" class=" btn-danger">
+                          <i class="far fa-thumbs-down"></i>
+                        </button>
+                      </>
+                    )}
                   </td>
                 )}
               </tr>
