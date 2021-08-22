@@ -27,7 +27,7 @@ export class CompanyProductComponent extends Component {
 
   render() {
     let { data } = this.state;
-
+    console.log("datadatadatadatadatadatadatadatadata", data);
     return (
       <div className="CompanyProductCard container">
         <div className="row">

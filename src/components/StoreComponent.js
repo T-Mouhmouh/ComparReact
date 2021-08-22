@@ -20,6 +20,7 @@ export class StoreComponent extends Component {
     var tt = await StoreService.GetStoreInfos(this.props.idCompany);
     this.setState({ store: tt.data });
   };
+
   render() {
     let { store } = this.state;
     return (
@@ -40,9 +41,9 @@ export class StoreComponent extends Component {
           <span>{store.city}</span>
         </div>
         {this.props.IsCompanyPage != "yes" && (
-          <div class=" StoreElement StoreLink">
-            <a href={"CompanyPage/" + store.id_company}>Voir Plus</a>
-          </div>
+          <a href={"CompanyPage/" + store.id_company}>
+            <div class=" StoreElement StoreLink">Voir Plus</div>
+          </a>
         )}
       </div>
     );

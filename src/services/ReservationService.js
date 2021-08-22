@@ -103,5 +103,42 @@ const ReservationService = {
       });
     return reservation;
   },
+
+  async review(id_reservation, reviewWord) {
+    var Reservation = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+    await axios
+      .put(
+        "https://localhost:44330/api/Reservation/Updatereview?id_reservation=" +
+          id_reservation +
+          "&reviewWord=" +
+          reviewWord +
+          ""
+      )
+      .then((data) => {
+        if (data.status == 201) {
+          Reservation.data = data.data;
+          Reservation.success = true;
+          Reservation.msg = "ok";
+        } else if (data.status == 204) {
+          Reservation.data = data.data;
+          Reservation.success = false;
+          Reservation.msg = "ko";
+        } else {
+          Reservation.success = false;
+          Reservation.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        Reservation.success = false;
+        Reservation.msg = err.stack;
+        Reservation.data = "";
+      });
+
+    return Reservation;
+  },
 };
 export default ReservationService;
