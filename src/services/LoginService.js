@@ -55,12 +55,12 @@ const LoginService = {
         if (data.status == 200) {
           User.data = data.data;
           User.success = true;
-          User.msg = "ok";
+          User.msg = "";
           localStorage.setItem("connectedUser", JSON.stringify(data.data));
         } else if (data.status == 204) {
           User.data = data.data;
           User.success = false;
-          User.msg = "ko";
+          User.msg = "";
         } else {
           User.success = false;
           User.msg = "try later !";
