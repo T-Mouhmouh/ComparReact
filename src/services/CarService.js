@@ -1,5 +1,6 @@
 import axios from "axios";
 const CarService = {
+  //initialSerach
   async ShercheCar(marque, model, city) {
     var SearchResult = {
       data: "",
@@ -31,7 +32,57 @@ const CarService = {
         }
       })
       .catch((err) => {
-        console.log(err);
+        SearchResult.success = false;
+        SearchResult.msg = err.stack;
+        SearchResult.data = "";
+      });
+    return SearchResult;
+  },
+
+  //FilterPlus
+  async filterePlus(filterePlusobj) {
+    var SearchResult = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+    await axios
+      .get(
+        "https://localhost:44330/api/Car/SearchCarPlus?Marque=" +
+          filterePlusobj.Marque +
+          "&Model=" +
+          filterePlusobj.Model +
+          "&City=" +
+          filterePlusobj.City +
+          "&minprice=" +
+          filterePlusobj.minprice +
+          "&maxprice=" +
+          filterePlusobj.maxprice +
+          "&minmileage=" +
+          filterePlusobj.minmilage +
+          "&maxmileage=" +
+          filterePlusobj.maxmilage +
+          "&minnbrPlaces=" +
+          filterePlusobj.minnmrPlaces +
+          "&maxnbrPlaces=" +
+          filterePlusobj.maxnmrPlaces +
+          ""
+      )
+      .then((data) => {
+        if (data.status == 200) {
+          SearchResult.data = data.data;
+          SearchResult.success = true;
+          SearchResult.msg = "ok";
+        } else if (data.status == 204) {
+          SearchResult.data = data.data;
+          SearchResult.success = false;
+          SearchResult.msg = "ko";
+        } else {
+          SearchResult.success = false;
+          SearchResult.msg = "try later !";
+        }
+      })
+      .catch((err) => {
         SearchResult.success = false;
         SearchResult.msg = err.stack;
         SearchResult.data = "";
@@ -63,7 +114,6 @@ const CarService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         Voitures.success = false;
         Voitures.msg = err.stack;
         Voitures.data = "";
@@ -95,7 +145,6 @@ const CarService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         villes.success = false;
         villes.msg = err.stack;
         villes.data = "";
@@ -263,6 +312,70 @@ const CarService = {
         Result.data = "";
       });
     return Result;
+  },
+
+  async AddCar(data) {
+    var RegisterUser = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+
+    await axios
+      .post("https://localhost:44330/api/Car/AddCar", data)
+      .then((data) => {
+        if (data.status == 201) {
+          RegisterUser.data = data.data;
+          RegisterUser.success = true;
+          RegisterUser.msg = "ok";
+        } else if (data.status == 204) {
+          RegisterUser.data = data.data;
+          RegisterUser.success = false;
+          RegisterUser.msg = "ko";
+        } else {
+          RegisterUser.success = false;
+          RegisterUser.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        RegisterUser.success = false;
+        RegisterUser.msg = err.stack;
+        RegisterUser.data = "";
+      });
+
+    return RegisterUser;
+  },
+
+  async UpdateCar(data) {
+    var RegisterUser = {
+      data: "",
+      success: false,
+      msg: "",
+    };
+
+    await axios
+      .put("https://localhost:44330/api/Car/UpdateCar", data)
+      .then((data) => {
+        if (data.status == 201) {
+          RegisterUser.data = data.data;
+          RegisterUser.success = true;
+          RegisterUser.msg = "ok";
+        } else if (data.status == 204) {
+          RegisterUser.data = data.data;
+          RegisterUser.success = false;
+          RegisterUser.msg = "ko";
+        } else {
+          RegisterUser.success = false;
+          RegisterUser.msg = "try later !";
+        }
+      })
+      .catch((err) => {
+        RegisterUser.success = false;
+        RegisterUser.msg = err.stack;
+        RegisterUser.data = "";
+      });
+
+    return RegisterUser;
   },
 };
 

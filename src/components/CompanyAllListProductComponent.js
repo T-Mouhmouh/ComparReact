@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 
 var img = "https://mnk-auto.store/wp-content/uploads/2020/10/830_202223891.jpg";
-
+var PATHCar = "https://localhost:44330/PhotosCar/";
 var tt;
 export class CompanyAllListProductComponent extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export class CompanyAllListProductComponent extends Component {
 
   componentWillMount = async () => {
     tt = await StoreService.GetMoreStoreCars(this.props.idCompany);
-    console.log("this.props.idCompany", this.props.idCompany);
+
     if (tt != undefined) {
       this.setState({
         CardDataToRander: tt.data,
@@ -46,45 +46,55 @@ export class CompanyAllListProductComponent extends Component {
       });
     }
   };
-
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words[0];
+  }
   render() {
     let { CardDataToRander } = this.state;
-    console.log("CardDataToRanderCardDataToRander : ", CardDataToRander);
+
     return (
       <div className="father">
-        {CardDataToRander.map((item, index) => (
-          <div className="CardList container">
-            <div className=" row center">
-              <div className="CardSliderImg col-lg-4  col-sm-12">
-                <img className="imgCardList" src={img}></img>
-              </div>
-              <div className="CardSliderDesc col-lg-8  col-sm-12">
-                <div className="CardPriceList">{item.price} DH</div>
-                <div className="CardDesc">{item.color} </div>
+        {CardDataToRander.length != 0 &&
+          CardDataToRander.map((item, index) => (
+            <div className="CardList container">
+              <div className=" row center">
+                <div className="CardSliderImg col-lg-4  col-sm-12">
+                  <img
+                    className="imgCardList"
+                    src={PATHCar + this.splitimg(item.imgName)}
+                  ></img>
+                </div>
+                <div className="CardSliderDesc col-lg-8  col-sm-12">
+                  <div className="CardPriceList">{item.price} DH</div>
+                  <div className="CardDesc">{item.color} </div>
 
-                <div className="CartBotomDiv">
-                  <hr />
-                  <div className=" row center">
-                    <div className="CardMarque  col-lg-6  col-sm-6">
-                      {item.mark}
+                  <div className="CartBotomDiv">
+                    <hr />
+                    <div className=" row center">
+                      <div className="CardMarque  col-lg-6  col-sm-6">
+                        {item.mark}
+                      </div>
+                      <div className="CardModel col-lg-6  col-sm-6">
+                        {item.model}
+                      </div>
                     </div>
-                    <div className="CardModel col-lg-6  col-sm-6">
-                      {item.model}
-                    </div>
-                  </div>
-                  <div className=" row center">
-                    <div className="CardDate col-lg-6  col-sm-6">
-                      {item.dateAnnance}
-                    </div>
-                    <div className="CardCity col-lg-6  col-sm-6">
-                      {item.city}
+                    <div className=" row center">
+                      <div className="CardDate col-lg-6  col-sm-6">
+                        {item.dateAnnance}
+                      </div>
+                      <div className="CardCity col-lg-6  col-sm-6">
+                        {item.city}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     );
   }

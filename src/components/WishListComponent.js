@@ -10,6 +10,7 @@ import {
   Redirect,
 } from "react-router-dom";
 var img = "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG";
+var PATHCar = "https://localhost:44330/PhotosCar/";
 export class WishListComponent extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +36,14 @@ export class WishListComponent extends Component {
 
     this.setState({ WishListCars: cars });
   };
+
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words[0];
+  }
 
   render() {
     let { WishListCars } = this.state;
@@ -62,7 +71,11 @@ export class WishListComponent extends Component {
                       state: { id_car: item.id_car },
                     }}
                   >
-                    <img width="70px" height="70px" src={img}></img>
+                    <img
+                      width="70px"
+                      height="70px"
+                      src={PATHCar + this.splitimg(item.imgName)}
+                    ></img>
                   </Link>
                 </th>
                 <td>{item.mark}</td>

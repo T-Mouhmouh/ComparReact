@@ -5,6 +5,8 @@ import LoginService from "../services/LoginService.js";
 import RegistrationService from "../services/RegistrationService";
 import "react-notifications/lib/notifications.css";
 import avatar from "../Style/img/avatar.jpg";
+import CarService from "../services/CarService.js";
+import { Typeahead } from "react-bootstrap-typeahead";
 import {
   NotificationContainer,
   NotificationManager,
@@ -25,6 +27,7 @@ var enregistrationObjet = {
   deleted: 1,
   imgName: "",
   imgFile: null,
+  description: "",
 };
 var connectedJ = {
   id_visitor: 0,
@@ -36,6 +39,7 @@ var connectedJ = {
   imgName: "",
   deleted: 1,
 };
+var Villes;
 var connected = localStorage.getItem("connectedVisitor");
 connectedJ = JSON.parse(connected);
 var connectedUser = localStorage.getItem("connectedUser");
@@ -48,6 +52,7 @@ export class RegistrationComponent extends Component {
     this.state = {
       login: "",
       password: "",
+      city: [],
       userType: "Particulier", //visitor or user
       UserConected: { data: "", msg: "", success: false },
       IsUpdatePage: false,
@@ -155,19 +160,16 @@ export class RegistrationComponent extends Component {
       case "tel":
         enregistrationObjet.phoneNumber = e.target.value;
         break;
-      case "ville":
-        enregistrationObjet.city = e.target.value;
+      case "description":
+        enregistrationObjet.description = e.target.value;
         break;
       case "avatar":
         enregistrationObjet.imgFile = e.target.files[0];
         enregistrationObjet.imgName = e.target.files[0].name;
 
-        console.log("img", e.target.files[0]);
         this.imageHandler(e);
         break;
     }
-
-    console.log("enregistrationObjet : ", enregistrationObjet);
   };
   imageHandler = (e) => {
     const reader = new FileReader();
@@ -198,14 +200,26 @@ export class RegistrationComponent extends Component {
     })
       .then((res) => res.json())
       .then(
-        (result) => {
-          console.log("resuult", result);
-        },
+        (result) => {},
         (error) => {
           alert("Failed");
         }
       );
   };
+
+  componentDidMount = async () => {
+    Villes = await CarService.GetAllvilles();
+    try {
+      var AllVilles = Array.from(
+        new Set(Villes.data.map((data) => data.ville))
+      );
+    } catch {}
+
+    this.setState({
+      city: AllVilles,
+    });
+  };
+
   render() {
     if (this.props.IsUpdatePage) {
       enregistrationObjet.id_visitor = connectedJ.id_visitor;
@@ -348,17 +362,35 @@ export class RegistrationComponent extends Component {
                 </div>
                 <div className="mb-3 col-6">
                   <label className="form-label fw-bold">Ville</label>
-                  <input
-                    type="text"
+                  <Typeahead
+                    clearButton
+                    id="basic-example"
+                    options={this.state.city}
                     className="form-control"
                     id="ville"
                     defaultValue={
                       this.props.IsUpdatePage ? connectedJ.city : ""
                     }
-                    placeholder="Ville"
                     onChange={this.enChangeelement}
+                    placeholder="Choose your City"
                   />
                 </div>
+                {this.state.userType == "Professionnel" && (
+                  <div className="mb-3 col-6">
+                    <label className="form-label fw-bold">Description</label>
+                    <textarea
+                      className="form-control"
+                      id="description"
+                      defaultValue={
+                        this.props.IsUpdatePage ? connectedJ.description : ""
+                      }
+                      placeholder="Description"
+                      onChange={this.enChangeelement}
+                      rows="5"
+                      cols="33"
+                    ></textarea>
+                  </div>
+                )}
               </div>
               {!this.props.IsUpdatePage && (
                 <button type="submit" className="btn btn-primary btn-lg">

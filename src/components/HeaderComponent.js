@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import "../Style/css/header.css";
 import "bootstrap/dist/css/bootstrap.css";
-import logo from "../Style/img/car.jpg";
+import logo from "../Style/img/KriliCar.PNG";
 import { Link } from "react-router-dom";
 var PATHVisitor = "https://localhost:44330/PhotosVisitor/";
 var PATHUser = "https://localhost:44330/PhotosUsers/";
@@ -34,11 +34,7 @@ export class HeaderComponent extends Component {
           <a href="/Search">
             <img className="menuimg" src={logo} />
           </a>
-          <div className="Links">
-            <a>Home</a>
-            <a>Client</a>
-            <a>Contact Us</a>
-          </div>
+          <div className="Links"></div>
           <button>open</button>
         </div>
         <div className="rightSide">
@@ -66,13 +62,19 @@ export class HeaderComponent extends Component {
               >
                 <li>
                   {connectedJ != null && (
-                    <a className="dropdown-item " href="ProfilePage">
+                    <a
+                      className="dropdown-item "
+                      href="http://localhost:3000/ProfilePage"
+                    >
                       <i class="fas fa-heart TabHeart"></i>
                       Mes favoris /<i class="fas fa-user-cog"></i>Profile
                     </a>
                   )}
                   {connectedUserJ != null && (
-                    <a className="dropdown-item " href="ProfileCompanyPage">
+                    <a
+                      className="dropdown-item "
+                      href="http://localhost:3000/ProfileCompanyPage"
+                    >
                       <i class="fas fa-list-ol TabHeart "></i>
                       Voitures /<i class="fas fa-user-cog"></i>Profile
                     </a>

@@ -9,6 +9,7 @@
 
 .imgCard {
   height: 210px;
+  width: 100%;
   padding: 3px;
   border-radius: 10% 3% 10% 3%;
 }
@@ -46,4 +47,15 @@ hr {
 .fa-heart:hover {
   cursor: pointer;
   color: coral !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .CardPrice {
+    margin-bottom: 15px;
+  }
+
+  hr,
+  .CardDesc {
+    display: none;
+  }
 }

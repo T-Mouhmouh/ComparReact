@@ -64,7 +64,7 @@ export class MarqueSliderComponent extends Component {
   }
   render() {
     let { data } = this.state;
-    console.log("render:", data);
+
     return (
       <>
         <div class="MarqueParent container">
@@ -77,8 +77,6 @@ export class MarqueSliderComponent extends Component {
               navigation
               autoplay={{ delay: 2000 }}
               pagination={{ clickable: true }}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
             >
               {this.state.data.map((item, index) => (
                 <SwiperSlide key={index}>

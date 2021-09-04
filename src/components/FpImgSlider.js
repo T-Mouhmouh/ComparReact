@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import CarService from "../services/CarService.js";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -17,14 +18,9 @@ import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
+var PATHCar = "https://localhost:44330/PhotosCar/";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
-let DemoData = [
-  "https://www.moteur.ma/media/photos/ads/resized/audi-a4-268599.JPG",
-  "https://www.moteur.ma/media/photos/ads/resized/audi-a4-219205.JPG",
-  "https://www.moteur.ma/media/photos/ads/resized/audi-a4-819248.JPG",
-  "https://www.moteur.ma/media/photos/ads/resized/audi-a4-256259.JPG",
-  "https://www.moteur.ma/media/photos/ads/resized/audi-a4-207953.JPG",
-];
+
 export class FpImgSlider extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +31,7 @@ export class FpImgSlider extends Component {
   }
   componentDidMount() {
     this.setState({
-      data: DemoData,
+      data: this.props.imgList,
     });
   }
   render() {
@@ -50,18 +46,17 @@ export class FpImgSlider extends Component {
             navigation
             //autoplay={{ delay: 6000 }}
             pagination={{ clickable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
           >
-            {this.state.data.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="SliderCart FpSliderImg">
-                  <div>
-                    <img className="FpImg" src={item} />
+            {this.state.data != null &&
+              this.state.data.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="SliderCart FpSliderImg">
+                    <div>
+                      <img className="FpImg" src={PATHCar + item} />
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </>

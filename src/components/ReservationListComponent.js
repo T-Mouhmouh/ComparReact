@@ -5,6 +5,7 @@ import ReservationService from "../services/ReservationService.js";
 import { Link } from "react-router-dom";
 var img = "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG";
 var PATHVisitor = "https://localhost:44330/PhotosVisitor/";
+var PATHCar = "https://localhost:44330/PhotosCar/";
 export class ReservationListComponent extends Component {
   constructor(props) {
     super(props);
@@ -62,12 +63,15 @@ export class ReservationListComponent extends Component {
       }
     }
   };
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words[0];
+  }
   render() {
     let { reservationList } = this.state;
-    console.log(
-      "reservationListreservationListreservationList : ",
-      reservationList
-    );
 
     {
       !this.props.isCompany &&
@@ -79,16 +83,16 @@ export class ReservationListComponent extends Component {
         <table className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col"></th>
               <th scope="col">Marque</th>
               <th scope="col">Model</th>
               <th scope="col">Feul Type</th>
               <th scope="col">Price</th>
               <th scope="col">Agence</th>
               <th scope="col">Date Réservation</th>
+              {this.props.isCompany && <th scope="col">Profile</th>}
               {this.props.isCompany && <th scope="col"> Nom et Prénom</th>}
               {this.props.isCompany && <th scope="col">Numéro de Télephone</th>}
-              {this.props.isCompany && <th scope="col">Profile</th>}
               <th scope="col">Nbr jours</th>
               {this.props.isCompany && <th scope="col">évaluation</th>}
             </tr>
@@ -103,7 +107,11 @@ export class ReservationListComponent extends Component {
                       state: { id_car: item?.id_car },
                     }}
                   >
-                    <img width="70px" height="70px" src={img}></img>
+                    <img
+                      width="70px"
+                      height="70px"
+                      src={PATHCar + this.splitimg(item.imgName)}
+                    ></img>
                   </Link>
                 </th>
                 <td>{item.mark}</td>

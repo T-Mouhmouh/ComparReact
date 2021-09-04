@@ -18,6 +18,7 @@ import {
   Redirect,
 } from "react-router-dom";
 var img = "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG";
+var PATHCar = "https://localhost:44330/PhotosCar/";
 let DemoData = [
   {
     img: "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG",
@@ -70,7 +71,6 @@ export class CardComponent extends Component {
     if (WishListCar != null) {
       WishListCarList = WishListCar.split(",");
     }
-    //  console.log("WishListCar : : : 0", WishListCarList);
 
     this.setState({
       data: DemoData,
@@ -88,13 +88,19 @@ export class CardComponent extends Component {
       var Delete = await WishListService.DeleteFromWishList(id_car);
     }
   };
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words[0];
+  }
   render() {
     var WishList = null;
     var WishListCar = localStorage.getItem("WishListCar");
     if (WishListCar != null) {
       WishList = WishListCar.split(",");
     }
-    console.log(" WishList", WishList);
 
     let { data, CardDataToRander, WishListCarList } = this.state;
     return (
@@ -127,7 +133,10 @@ export class CardComponent extends Component {
               >
                 <div className=" row center">
                   <div className="CardSliderImg col-lg-4  col-sm-12">
-                    <img className="imgCard" src={img}></img>
+                    <img
+                      className="imgCard"
+                      src={PATHCar + this.splitimg(item.imgName)}
+                    ></img>
                   </div>
 
                   <div className="CardSliderDesc col-lg-8  col-sm-12">

@@ -27,7 +27,6 @@ const RegistrationService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         RegisterUser.success = false;
         RegisterUser.msg = err.stack;
         RegisterUser.data = "";
@@ -59,7 +58,6 @@ const RegistrationService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         RegisterUser.success = false;
         RegisterUser.msg = err.stack;
         RegisterUser.data = "";

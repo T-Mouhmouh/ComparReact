@@ -8,7 +8,7 @@ const StoreService = {
       msg: "",
     };
     await axios
-      .get("https://localhost:44330/api/Company/GetCompany?Id=" + id + "")
+      .get("https://localhost:44330/api/Users/GetUsers?Id=" + id + "")
       .then((data) => {
         if (data.status == 200) {
           Store.data = data.data;

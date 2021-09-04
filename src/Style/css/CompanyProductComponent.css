@@ -20,7 +20,7 @@
 
 .ProductImg img {
   border-radius: 10px 50px 10px 10px;
-  max-width: 280px;
+  width: 250px;
   height: 150px;
 }
 .ProductPrice {

@@ -18,3 +18,11 @@
   width: 169px;
   margin: 15px;
 }
+
+.MuiDialog-paperWidthSm {
+  max-width: 1000px !important;
+}
+
+.Typeahead {
+  margin-top: 5px;
+}

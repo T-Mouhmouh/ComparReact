@@ -7,6 +7,15 @@
   margin-bottom: 15px;
   box-shadow: 0 0 11px rgba(136, 129, 177, 0.575);
 }
+.sliderplus {
+  margin-bottom: 35px;
+}
+.multiranger {
+  height: 90px !important;
+}
+.title {
+  margin-bottom: 5px;
+}
 
 .SearchDiv {
   display: flex;
@@ -22,4 +31,16 @@
 .SearchComponentParent .SearchComponentCont select {
   width: 100%;
   margin: 5px;
+}
+
+.fa-searchengin {
+  color: chocolate;
+  font-size: 25px;
+}
+
+#btnfilterPlus {
+  cursor: pointer;
+}
+#btnfilterPlus:hover {
+  font-size: 28px;
 }

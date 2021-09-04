@@ -69,7 +69,7 @@
 }
 
 .menuimg {
-  height: 63px;
+  height: 82px;
   padding-left: 9px;
 }
 
@@ -80,6 +80,7 @@
 .TabHeart {
   float: left !important;
   margin-right: 5px !important;
+  margin-top: 5px !important;
   font-size: 17px !important;
   color: blueviolet !important;
 }
@@ -105,6 +106,9 @@
 @media only screen and (max-width: 850px) {
   .Navbar .leftSide .Links a {
     font-size: 15px;
+  }
+  .usernamebtn {
+    width: 70px;
   }
 }
 

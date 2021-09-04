@@ -28,7 +28,6 @@ const WishListService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         visitor.success = false;
         visitor.msg = err.stack;
         visitor.data = "";

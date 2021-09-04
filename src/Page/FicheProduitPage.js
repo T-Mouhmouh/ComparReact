@@ -10,7 +10,7 @@ import { CompanyProductComponent } from "../components/CompanyProductComponent";
 import { ResirvationComponent } from "../components/ResirvationComponent";
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 import { HeaderComponent } from "../components/HeaderComponent";
-
+var PATHCar = "https://localhost:44330/PhotosCar/";
 export class FicheProduitPage extends Component {
   constructor(props) {
     super(props);
@@ -20,26 +20,38 @@ export class FicheProduitPage extends Component {
       model: "",
       city: "",
       FpDatatoRender: "",
+      imgName: "",
     };
   }
 
   componentWillMount = async () => {
-    console.log("FicheProduitPag : ", this.props.location.state.id_car);
     var FpDatatoRender = await CarService.GetCarById(
       this.props.location.state.id_car
     );
-    this.setState({ FpDatatoRender: FpDatatoRender });
+    var tt = this.splitimg(FpDatatoRender.data.imgName);
+    this.setState({
+      FpDatatoRender: FpDatatoRender,
+      imgName: tt,
+    });
   };
 
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words;
+  }
+
   render() {
-    let { FpDatatoRender } = this.state;
+    let { FpDatatoRender, imgName } = this.state;
     return (
       <>
         <HeaderComponent />
         <div className="row center">
-          {FpDatatoRender != "" && <FpImgSlider />}
+          {FpDatatoRender != "" && <FpImgSlider imgList={imgName} />}
           {FpDatatoRender != "" && (
-            <StoreComponent idCompany={FpDatatoRender?.data.id_company} />
+            <StoreComponent idCompany={FpDatatoRender?.data.id_user} />
           )}
           <div className="col-6">
             {FpDatatoRender != "" && (
@@ -49,7 +61,7 @@ export class FicheProduitPage extends Component {
           <div className="col ResirvationComponent">
             {FpDatatoRender != "" && (
               <ResirvationComponent
-                idcompany={FpDatatoRender?.data.id_company}
+                idcompany={FpDatatoRender?.data.id_user}
                 idcar={FpDatatoRender?.data.id_car}
               />
             )}
@@ -57,9 +69,7 @@ export class FicheProduitPage extends Component {
 
           <p class="ChoiseTitle">Résultats similaires :</p>
           {FpDatatoRender != "" && (
-            <CompanyProductComponent
-              idCompany={FpDatatoRender?.data.id_company}
-            />
+            <CompanyProductComponent idCompany={FpDatatoRender?.data.id_user} />
           )}
         </div>
       </>

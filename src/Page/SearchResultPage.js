@@ -21,7 +21,6 @@ export class SearchResultPage extends Component {
     };
   }
   DataToRender = (data) => {
-    console.log("data on parent : ", data);
     this.state.DataToRanderInCard = data;
     this.setState({
       tt: "btt",

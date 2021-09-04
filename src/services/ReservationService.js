@@ -61,7 +61,6 @@ const ReservationService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         reservation.success = false;
         reservation.msg = err.stack;
         reservation.data = "";
@@ -96,7 +95,6 @@ const ReservationService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         reservation.success = false;
         reservation.msg = err.stack;
         reservation.data = "";

@@ -31,7 +31,6 @@ const LoginService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         visitor.success = false;
         visitor.msg = err.stack;
         visitor.data = "";
@@ -54,7 +53,6 @@ const LoginService = {
       )
       .then((data) => {
         if (data.status == 200) {
-          console.log("data", User.data);
           User.data = data.data;
           User.success = true;
           User.msg = "ok";
@@ -69,12 +67,11 @@ const LoginService = {
         }
       })
       .catch((err) => {
-        console.log(err);
         User.success = false;
         User.msg = err.stack;
         User.data = "";
       });
-    console.log("UserUserUserUser", User);
+
     return User;
   },
 };

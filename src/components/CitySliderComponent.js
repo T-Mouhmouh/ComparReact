@@ -34,7 +34,7 @@ export class CitySliderComponent extends Component {
   }
   render() {
     let { data } = this.state;
-    console.log("render:", data);
+
     return (
       <>
         <div class="SliderParent container">
@@ -47,8 +47,6 @@ export class CitySliderComponent extends Component {
               navigation
               autoplay={{ delay: 4000 }}
               pagination={{ clickable: true }}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
             >
               {this.state.data.map((item, index) => (
                 <SwiperSlide key={index}>

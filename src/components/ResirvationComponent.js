@@ -28,7 +28,7 @@ var connectedJ = {
 var ReservationData = {
   id_visitor: 0,
   id_car: 0,
-  id_company: 0,
+  id_user: 0,
   date_reservation: "",
   visitorPhoneNumber: "",
   visitorImgName: "",
@@ -52,7 +52,7 @@ export class ResirvationComponent extends Component {
     ReservationData.visitorName = connectedJ.fullName;
     ReservationData.visitorPhoneNumber = connectedJ.phoneNumber;
     ReservationData.id_car = this.props.idcar;
-    ReservationData.id_company = this.props.idcompany;
+    ReservationData.id_user = this.props.idcompany;
 
     var ss = await ReservationService.AddReservation(ReservationData);
     if (ss.success) {

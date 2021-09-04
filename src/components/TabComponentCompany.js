@@ -73,7 +73,7 @@ export class TabComponentCompany extends Component {
               aria-controls="contact"
               aria-selected="false"
             >
-              <i class="fas fa-heart TabHeart"></i>
+              <i class="fas fa-chart-pie TabHeart"></i>
               KPI
             </button>
           </li>

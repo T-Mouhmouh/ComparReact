@@ -7,7 +7,7 @@ import StoreService from "../services/StoreService";
 
 import { Form, Button, Input, Label, FormGroup } from "reactstrap";
 var img = "https://img.e-marketing.fr/Images/Breves/breve48883-0.JPG";
-
+var PATHCar = "https://localhost:44330/PhotosCar/";
 export class CompanyProductComponent extends Component {
   constructor(props) {
     super(props);
@@ -21,13 +21,26 @@ export class CompanyProductComponent extends Component {
 
   componentWillMount = async () => {
     var tt = await StoreService.GetMoreStoreCars(this.props.idCompany);
-    console.log("tt in more", tt.data);
+
     this.setState({ data: tt.data });
   };
 
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words[0];
+  }
+  splitimg(img) {
+    var words;
+    if (img != null) words = img.split("__");
+    if (img == null) {
+      return img;
+    } else return words[0];
+  }
   render() {
     let { data } = this.state;
-    console.log("datadatadatadatadatadatadatadatadata", data);
     return (
       <div className="CompanyProductCard container">
         <div className="row">
@@ -38,15 +51,13 @@ export class CompanyProductComponent extends Component {
             navigation
             autoplay={{ delay: 6000 }}
             pagination={{ clickable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             {data.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="cardpr" index={index}>
                   <div className="test">
                     <div className="ProductImg">
-                      <img src={img} />
+                      <img src={PATHCar + this.splitimg(item.imgName)} />
                     </div>
 
                     <div>

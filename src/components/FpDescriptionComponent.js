@@ -16,32 +16,23 @@ export class FpDescriptionComponent extends Component {
       city: "",
     };
   }
-  componentDidMount() {
-    console.log("in description comp :", this.props.car);
-  }
-  render() {
-    var fuel_type = "";
-    if (this.props.car.fuel_type?.toUpperCase() == "D") {
-      fuel_type = "Diesel";
-    }
-    if (this.props.car.fuel_type?.toUpperCase() == "E") {
-      fuel_type = "Essence";
-    }
-    if (this.props.car.fuel_type?.toUpperCase() == "H") {
-      fuel_type = "Hybride";
-    }
 
+  render() {
     return (
       <div class="FpDescriptionComponentParent    container">
         <div class="FpDescriptionComponentCont  center">
           <div className="row">
-            <div class="Section SectionPrice col-lg-8  col-sm-12 ">
+            <div class="Section SectionPrice col-lg-4  col-sm-12 ">
               <i class="fas fa-money-bill-wave"></i>
               <span className="FpPrice">{this.props.car?.price} DH</span>
             </div>
             <div class="Section SectionPrice col-lg-4  col-sm-12 ">
               <i class="far fa-eye"></i>
               <span className="FpPrice">{this.props.car?.mark}</span>
+            </div>
+            <div class="Section SectionPrice col-lg-4  col-sm-12 ">
+              <i class="fab fa-medium"></i>
+              <span className="FpPrice">{this.props.car?.model}</span>
             </div>
           </div>
 
@@ -56,7 +47,7 @@ export class FpDescriptionComponent extends Component {
             </div>
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-gas-pump"></i>
-              <span>{fuel_type}</span>
+              <span>{this.props.car?.fuel_type}</span>
             </div>
             <div class="Section  col-lg-4  col-sm-12 ">
               <i class="fas fa-route"></i>
