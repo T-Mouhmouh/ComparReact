@@ -19,12 +19,12 @@ const LoginService = {
         if (data.status == 200) {
           visitor.data = data.data;
           visitor.success = true;
-          visitor.msg = "ok";
+          visitor.msg = "";
           localStorage.setItem("connectedVisitor", JSON.stringify(data.data));
         } else if (data.status == 204) {
           visitor.data = data.data;
           visitor.success = false;
-          visitor.msg = "ko";
+          visitor.msg = "";
         } else {
           visitor.success = false;
           visitor.msg = "try later !";
