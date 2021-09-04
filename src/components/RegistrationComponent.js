@@ -371,7 +371,9 @@ export class RegistrationComponent extends Component {
                     defaultValue={
                       this.props.IsUpdatePage ? connectedJ.city : ""
                     }
-                    onChange={this.enChangeelement}
+                    onChange={(e) => {
+                      enregistrationObjet.city = e[0];
+                    }}
                     placeholder="Choose your City"
                   />
                 </div>
