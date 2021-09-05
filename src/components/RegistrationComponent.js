@@ -368,7 +368,7 @@ export class RegistrationComponent extends Component {
                     options={this.state.city}
                     className="form-control"
                     id="ville"
-                    defaultValue={
+                    defaultInputValue={
                       this.props.IsUpdatePage ? connectedJ.city : ""
                     }
                     onChange={(e) => {
