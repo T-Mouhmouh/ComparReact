@@ -10,8 +10,8 @@ export class TabComponent extends Component {
   render() {
     return (
       <>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
+        <ul className="nav nav-tabs" id="myTab" role="tablist">
+          <li className="nav-item" role="presentation">
             <button
               className="nav-link "
               id="home-tab"
@@ -22,11 +22,11 @@ export class TabComponent extends Component {
               aria-controls="home"
               aria-selected="true"
             >
-              <i class="fas fa-user-cog TabHeart"></i>
+              <i className="fas fa-user-cog TabHeart"></i>
               Profile
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <button
               className="nav-link active"
               id="contact-tab"
@@ -37,11 +37,11 @@ export class TabComponent extends Component {
               aria-controls="contact"
               aria-selected="false"
             >
-              <i class="fas fa-heart TabHeart"></i>
+              <i className="fas fa-heart TabHeart"></i>
               WishList
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <button
               className="nav-link "
               id="reservation-tab"
@@ -52,12 +52,12 @@ export class TabComponent extends Component {
               aria-controls="home"
               aria-selected="true"
             >
-              <i class="fas fa-handshake TabHeart"></i>
+              <i className="fas fa-handshake TabHeart"></i>
               Réservation
             </button>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div className="tab-content" id="myTabContent">
           <div
             className="tab-pane fade "
             id="home"

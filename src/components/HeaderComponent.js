@@ -29,7 +29,7 @@ export class HeaderComponent extends Component {
     /*  var WishListCar = localStorage.getItem("WishListCar");
     var WishListCarJ = JSON.parse(WishListCar); */
     return (
-      <div class="Navbar  sticky-top">
+      <div className="Navbar  sticky-top">
         <div className="leftSide">
           <a href="/Search">
             <img className="menuimg" src={logo} />
@@ -39,7 +39,7 @@ export class HeaderComponent extends Component {
         </div>
         <div className="rightSide">
           {!loginEtat && (
-            <button type="button" class="loginbtn btn btn-success">
+            <button type="button" className="loginbtn btn btn-success">
               Login
             </button>
           )}
@@ -66,8 +66,8 @@ export class HeaderComponent extends Component {
                       className="dropdown-item "
                       href="http://localhost:3000/ProfilePage"
                     >
-                      <i class="fas fa-heart TabHeart"></i>
-                      Mes favoris /<i class="fas fa-user-cog"></i>Profile
+                      <i className="fas fa-heart TabHeart"></i>
+                      Mes favoris /<i className="fas fa-user-cog"></i>Profile
                     </a>
                   )}
                   {connectedUserJ != null && (
@@ -75,8 +75,8 @@ export class HeaderComponent extends Component {
                       className="dropdown-item "
                       href="http://localhost:3000/ProfileCompanyPage"
                     >
-                      <i class="fas fa-list-ol TabHeart "></i>
-                      Voitures /<i class="fas fa-user-cog"></i>Profile
+                      <i className="fas fa-list-ol TabHeart "></i>
+                      Voitures /<i className="fas fa-user-cog"></i>Profile
                     </a>
                   )}
                 </li>
@@ -91,7 +91,7 @@ export class HeaderComponent extends Component {
                     }}
                     href="Login"
                   >
-                    <i class="fas fa-sign-out-alt TabHeart"></i>
+                    <i className="fas fa-sign-out-alt TabHeart"></i>
                     Log Out
                   </a>
                 </li>

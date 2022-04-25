@@ -37,7 +37,7 @@ import "../src/Style/css/fontawesome.min.css";
 export class App extends Component {
   render() {
     return (
-      <div class="app">
+      <div className="app">
         <link rel="stylesheet" href="style css" />
 
         {/*

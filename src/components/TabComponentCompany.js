@@ -46,8 +46,8 @@ export class TabComponentCompany extends Component {
 
     return (
       <>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
+        <ul className="nav nav-tabs" id="myTab" role="tablist">
+          <li className="nav-item" role="presentation">
             <button
               className="nav-link active "
               id="home-tab"
@@ -58,11 +58,11 @@ export class TabComponentCompany extends Component {
               aria-controls="home"
               aria-selected="true"
             >
-              <i class="fas fa-folder-plus TabHeart"></i>
-              Ajouter /<i class="fas fa-list-ol "></i>List
+              <i className="fas fa-folder-plus TabHeart"></i>
+              Ajouter /<i className="fas fa-list-ol "></i>List
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <button
               className="nav-link "
               id="contact-tab"
@@ -73,11 +73,11 @@ export class TabComponentCompany extends Component {
               aria-controls="contact"
               aria-selected="false"
             >
-              <i class="fas fa-chart-pie TabHeart"></i>
+              <i className="fas fa-chart-pie TabHeart"></i>
               KPI
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <button
               className="nav-link "
               id="reservation-tab"
@@ -88,34 +88,34 @@ export class TabComponentCompany extends Component {
               aria-controls="home"
               aria-selected="true"
             >
-              <i class="fas fa-handshake TabHeart"></i>
+              <i className="fas fa-handshake TabHeart"></i>
               Réservation
             </button>
           </li>
 
           {connectedUserJ.sponsor == "yes" && (
             <button
-              class="btn btn-warning boostit"
+              className="btn btn-warning boostit"
               id="btnboost"
               disabled
               onClick={() => this.handleClickOpen()}
             >
-              <i class="fas fa-rocket"></i>
+              <i className="fas fa-rocket"></i>
               Boost it !
             </button>
           )}
           {connectedUserJ.sponsor == "Non" && (
             <button
-              class="btn btn-warning boostit"
+              className="btn btn-warning boostit"
               id="btnboost"
               onClick={() => this.handleClickOpen()}
             >
-              <i class="fas fa-rocket"></i>
+              <i className="fas fa-rocket"></i>
               Boost it !
             </button>
           )}
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div className="tab-content" id="myTabContent">
           <div
             className="tab-pane fade show active"
             id="home"

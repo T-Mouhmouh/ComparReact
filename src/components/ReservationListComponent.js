@@ -139,22 +139,22 @@ export class ReservationListComponent extends Component {
                         <button
                           id={"likebtn" + item.id_reservation}
                           type="button"
-                          class=" btn-success  likelikeBtn "
+                          className=" btn-success  likelikeBtn "
                           onClick={() =>
                             this.review(item.id_reservation, "like")
                           }
                         >
-                          <i class="far fa-thumbs-up"></i>
+                          <i className="far fa-thumbs-up"></i>
                         </button>
                         <button
                           id={"dislikebtn" + item.id_reservation}
                           type="button"
-                          class=" btn-danger"
+                          className=" btn-danger"
                           onClick={() =>
                             this.review(item.id_reservation, "dislike")
                           }
                         >
-                          <i class="far fa-thumbs-down"></i>
+                          <i className="far fa-thumbs-down"></i>
                         </button>
                       </>
                     )}
@@ -163,16 +163,16 @@ export class ReservationListComponent extends Component {
                         <button
                           disabled
                           type="button"
-                          class=" btn-success  likelikeBtn "
+                          className=" btn-success  likelikeBtn "
                         >
-                          <i class="far fa-thumbs-up"></i>
+                          <i className="far fa-thumbs-up"></i>
                         </button>
                       </>
                     )}
                     {item.review == "dislike" && (
                       <>
-                        <button disabled type="button" class=" btn-danger">
-                          <i class="far fa-thumbs-down"></i>
+                        <button disabled type="button" className=" btn-danger">
+                          <i className="far fa-thumbs-down"></i>
                         </button>
                       </>
                     )}

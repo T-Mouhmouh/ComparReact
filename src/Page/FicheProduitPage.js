@@ -67,7 +67,7 @@ export class FicheProduitPage extends Component {
             )}
           </div>
 
-          <p class="ChoiseTitle">Résultats similaires :</p>
+          <p className="ChoiseTitle">Résultats similaires :</p>
           {FpDatatoRender != "" && (
             <CompanyProductComponent idCompany={FpDatatoRender?.data.id_user} />
           )}

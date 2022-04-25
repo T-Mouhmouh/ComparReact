@@ -112,14 +112,14 @@ export class CardComponent extends Component {
                 {WishList != null &&
                   !WishList.some((val) => item.id_car == val) && (
                     <i
-                      class="far fa-heart "
+                      className="far fa-heart "
                       onClick={(e) => this.addFavorit(e, item.id_car)}
                     ></i>
                   )}
                 {WishList != null &&
                   WishList.some((val) => item.id_car == val) && (
                     <i
-                      class="fas fa-heart"
+                      className="fas fa-heart"
                       onClick={(e) => this.addFavorit(e, item.id_car)}
                     ></i>
                   )}

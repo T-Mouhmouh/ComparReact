@@ -34,16 +34,16 @@ export class CompanyPage extends Component {
     return (
       <>
         <HeaderComponent />
-        <div class="container">
-          <div class="row">
-            <div class="col-8">
+        <div className="container">
+          <div className="row">
+            <div className="col-8">
               <div className="CompanyPage">
                 {Id_Company != 0 && (
                   <CompanyAllListProductComponent idCompany={Id_Company} />
                 )}
               </div>
             </div>
-            <div class="col-4">
+            <div className="col-4">
               {Id_Company != 0 && (
                 <StoreComponent idCompany={Id_Company} IsCompanyPage={"yes"} />
               )}

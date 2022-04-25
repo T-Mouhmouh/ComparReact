@@ -20,9 +20,9 @@ export class ProfileCompanyPage extends Component {
     return (
       <>
         <HeaderComponent />
-        <div class="container ProfilePage">
-          <div class="row">
-            <div class="col">
+        <div className="container ProfilePage">
+          <div className="row">
+            <div className="col">
               <TabComponentCompany />
             </div>
           </div>

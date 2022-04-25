@@ -364,7 +364,6 @@ export class RegistrationComponent extends Component {
                   <label className="form-label fw-bold">Ville</label>
                   <Typeahead
                     clearButton
-                    id="basic-example"
                     options={this.state.city}
                     className="form-control"
                     id="ville"

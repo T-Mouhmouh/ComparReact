@@ -115,9 +115,9 @@ export class SearchComponent extends Component {
     let { marque, model, city } = this.state;
     return (
       <form onSubmit={this.submitSearch}>
-        <div class="SearchComponentParent container">
-          <div class="SearchComponentCont row center">
-            <div class="MarqueSection  col-lg-4  col-sm-12 ">
+        <div className="SearchComponentParent container">
+          <div className="SearchComponentCont row center">
+            <div className="MarqueSection  col-lg-4  col-sm-12 ">
               <Typeahead
                 clearButton
                 id="basic-example"
@@ -128,7 +128,7 @@ export class SearchComponent extends Component {
                 placeholder="Choose your Marque..."
               />
             </div>
-            <div class="ModelSection col-lg-4 col-sm-12">
+            <div className="ModelSection col-lg-4 col-sm-12">
               <Typeahead
                 clearButton
                 id="basic-example"
@@ -141,7 +141,7 @@ export class SearchComponent extends Component {
                 placeholder=" Choose your Model"
               />
             </div>
-            <div class="Citysection col-lg-4 col-sm-12">
+            <div className="Citysection col-lg-4 col-sm-12">
               <Typeahead
                 clearButton
                 id="basic-example"
@@ -156,15 +156,15 @@ export class SearchComponent extends Component {
             </div>
           </div>
           <div className="SearchDiv">
-            <button class="SearchBtn btn btn-success">
-              <i class="fas fa-search"></i>
+            <button className="SearchBtn btn btn-success">
+              <i className="fas fa-search"></i>
             </button>
           </div>
           <>
-            <div class="SearchComponentCont row center">
+            <div className="SearchComponentCont row center">
               <p>
                 <i
-                  class="fab fa-searchengin"
+                  className="fab fa-searchengin"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseExampl"
                   aria-expanded="false"
@@ -177,7 +177,7 @@ export class SearchComponent extends Component {
               </p>
 
               <div
-                class="collapse SearchComponentCont row center"
+                className="collapse SearchComponentCont row center"
                 id="collapseExampl"
               >
                 <div className=" sliderplus col-lg-4  col-sm-6 ">

@@ -20,12 +20,12 @@ export class ProfilePage extends Component {
     return (
       <>
         <HeaderComponent />
-        <div class="container ProfilePage">
-          <div class="row">
-            <div class="col-8">
+        <div className="container ProfilePage">
+          <div className="row">
+            <div className="col-8">
               <TabComponent />
             </div>
-            <div class="col-4">
+            <div className="col-4">
               <img className="profilimg" src={profilimg} />
             </div>
           </div>

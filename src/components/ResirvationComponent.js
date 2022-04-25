@@ -85,7 +85,7 @@ export class ResirvationComponent extends Component {
           <>
             <p>
               <button
-                class="btn btn-primary"
+                className="btn btn-primary"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseExample"
@@ -93,22 +93,22 @@ export class ResirvationComponent extends Component {
                 aria-controls="collapseExample"
                 id="btnreserver"
               >
-                <i class="fas fa-handshake"></i>
+                <i className="fas fa-handshake"></i>
                 Reserver
               </button>
             </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
+            <div className="collapse" id="collapseExample">
+              <div className="card card-body">
                 <div className="row infoFathr">
-                  <div class="col info">
+                  <div className="col info">
                     {connectedJ != null && connectedJ.fullName}
                   </div>
-                  <div class="col info">
+                  <div className="col info">
                     {connectedJ != null && connectedJ.city}
                   </div>
                 </div>
                 <div className="row">
-                  <div class="col datereservation">
+                  <div className="col datereservation">
                     date reservation :
                     <input
                       type="date"
@@ -116,7 +116,7 @@ export class ResirvationComponent extends Component {
                       onChange={this.dateChange}
                     />
                   </div>
-                  <div class="col datereservation">
+                  <div className="col datereservation">
                     Nombre des Jours :
                     <input
                       type="number"
@@ -127,10 +127,10 @@ export class ResirvationComponent extends Component {
                 </div>
                 <button
                   type="button"
-                  class="btn btn-warning"
+                  className="btn btn-warning"
                   onClick={this.reservation}
                 >
-                  Reserver <i class="fas fa-thumbtack"></i>
+                  Reserver <i className="fas fa-thumbtack"></i>
                 </button>
               </div>
             </div>

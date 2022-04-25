@@ -351,9 +351,9 @@ export class CarCompanyListComponent extends Component {
         <button
           type="button"
           onClick={() => this.AjouterCar()}
-          class="btn btn-primary addbtn"
+          className="btn btn-primary addbtn"
         >
-          <i class="far fa-plus-square"></i> Ajouter
+          <i className="far fa-plus-square"></i> Ajouter
         </button>
         <table className="table table-hover">
           <thead>
@@ -413,11 +413,11 @@ export class CarCompanyListComponent extends Component {
                   <td>
                     <div className="form-check form-switch">
                       <i
-                        class="far fa-edit"
+                        className="far fa-edit"
                         onClick={() => this.UpdateCar(item.id_car)}
                       ></i>
                       <i
-                        class="far fa-trash-alt"
+                        className="far fa-trash-alt"
                         onClick={() => this.deleteCar(item.id_car)}
                       ></i>
                     </div>

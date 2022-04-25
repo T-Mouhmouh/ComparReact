@@ -28,10 +28,10 @@ export class KpiComponent extends Component {
     let { kpi } = this.state;
 
     return (
-      <div class="container">
-        <div class="center">
+      <div className="container">
+        <div className="center">
           <div className="row">
-            <div class=" col-sm-6 col-lg-4 col-xl-3">
+            <div className=" col-sm-6 col-lg-4 col-xl-3">
               <div className="kpiCard">
                 <span>Nbr/Voitures</span>
                 <i className="fas fa-car  kpiicons"></i>
@@ -40,7 +40,7 @@ export class KpiComponent extends Component {
                 </p>
               </div>
             </div>
-            <div class="col-sm-6 col-lg-4  col-xl-3">
+            <div className="col-sm-6 col-lg-4  col-xl-3">
               <div className="kpiCard">
                 <span>Réservation</span>
                 <i className="fas fa-handshake kpiicons"></i>
@@ -52,16 +52,16 @@ export class KpiComponent extends Component {
                 </p>
               </div>
             </div>
-            <div class="col-sm-6 col-lg-4  col-xl-3">
+            <div className="col-sm-6 col-lg-4  col-xl-3">
               <div className="kpiCard">
                 <span>Positif</span>
-                <i class="far fa-thumbs-up kpiicons"></i>
+                <i className="far fa-thumbs-up kpiicons"></i>
                 <p className="kpip">
                   {kpi != undefined && kpi != null && kpi != "" && kpi[0].like}
                 </p>
               </div>
             </div>
-            <div class="col-sm-6 col-lg-4  col-xl-3">
+            <div className="col-sm-6 col-lg-4  col-xl-3">
               <div className="kpiCard">
                 <span>Négative</span>
                 <i className="far fa-thumbs-down kpiicons"></i>

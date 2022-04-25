@@ -25,25 +25,25 @@ export class StoreComponent extends Component {
     let { store } = this.state;
 
     return (
-      <div class="StoreComponentParent col-4">
-        <div class=" StoreImgparent ">
+      <div className="StoreComponentParent col-4">
+        <div className=" StoreImgparent ">
           <img className="StoreImg" src={PATHUser + store.imgName} />
         </div>
-        <div class=" StoreElement storeName">
-          <i class="fas fa-store"></i>
+        <div className=" StoreElement storeName">
+          <i className="fas fa-store"></i>
           <span>{store.fullName}</span>
         </div>
-        <div class="StoreElement  StoreTel">
-          <i class="fas fa-phone-square-alt"></i>
+        <div className="StoreElement  StoreTel">
+          <i className="fas fa-phone-square-alt"></i>
           <span>{store.phoneNumber} </span>
         </div>
-        <div class="StoreElement  StoreLocalisation">
-          <i class="fas fa-map-marker-alt"></i>
+        <div className="StoreElement  StoreLocalisation">
+          <i className="fas fa-map-marker-alt"></i>
           <span>{store.city}</span>
         </div>
         {this.props.IsCompanyPage != "yes" && (
           <a href={"CompanyPage/" + store.id_user}>
-            <div class=" StoreElement StoreLink">Voir Plus</div>
+            <div className=" StoreElement StoreLink">Voir Plus</div>
           </a>
         )}
       </div>
